@@ -1,5 +1,5 @@
 import React from 'react'
-import {rightSideBarIcons} from './constants/Dashboard'
+import {rightSideBarIcons} from '../constants/Dashboard'
 const RightSideBar = () => {
   return (
     <div className='flex h-screen flex-col px-4'>

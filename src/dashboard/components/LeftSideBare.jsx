@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
-import {generalChat,home,invitations,myDoctors,myPatients,questions,scoreOfPrediction,statistics,updatequestions} from './assets/assets'
-import {leftSideBarIcons} from './constants/Dashboard'
+import {generalChat,home,invitations,myDoctors,myPatients,questions,scoreOfPrediction,statistics,updatequestions} from '../assets/assets'
+import {leftSideBarIcons} from '../constants/Dashboard'
 
 const LeftSideBare = () => {
   const [ActiveElement, setActiveElement] = useState('Home')

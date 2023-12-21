@@ -8,9 +8,11 @@ import invitations from './Vectorinvitations.svg'
 import questions from './Vectorquestions.svg'
 import updatequestions from './updatequestions.svg'
 import chat from './chat.svg'
-import notifications from './notifications.svg'
+import notifications from './notifications.svg';
+import deleteIcon from './delete.svg'
 import settings from './settings.svg'
-
+import addUser from './adduser.svg'
+import groupusers from './groupusers.svg'
 
 export {
     generalChat,
@@ -24,5 +26,8 @@ export {
     updatequestions,
     chat,
     notifications,
-    settings    
+    settings,
+    deleteIcon,
+    addUser,
+    groupusers    
 }

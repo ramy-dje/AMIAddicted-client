@@ -30,6 +30,10 @@
   background-color: #1D203E; /* Thumb color */
   border-radius: 15px; /* Rounded corners */
 }
+/* In your CSS file or style tag */
+.custom-shadow {
+  box-shadow: 18px 11px 17px rgba(0, 0, 0, 0.5);
+}
 
 .text-gradient {
   background: radial-gradient(
