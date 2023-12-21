@@ -85,13 +85,13 @@ const GeneralChat = () => {
         },
     ]
   return (
-    <div className='w-11/12 h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 pt-2 sm:overflow-hidden overflow-auto'>
+    <div className='w-11/12 h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 pt-2 sm:overflow-hidden '>
         <div className='h-5/6 w-full overflow-auto pr-1'>
-            {messages.map((e)=>(<div className={`flex ${e.user =='amine' ? 'justify-start':' flex-row-reverse'} gap-2 mb-2  text-white group`}>
-                <div className='w-12 h-12 bg-gray-500 rounded-lg'></div>
-                <div 
-                className={`p-2 max-w-[300px] ${e.user == 'amine' ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
-                > {e.msg}</div>
+            {messages.map((e,i)=>(<div key={i} className={`flex ${e.user =='amine' ? 'justify-start':' flex-row-reverse'} gap-2 mb-2  text-white group`}>
+                <div className='sm:w-12 sm:h-12 w-8 h-8  bg-gray-500 rounded-lg'></div>
+                <p 
+                className={`p-2 sm:max-w-[300px] max-w-[150px] text-sm sm:text-lg ${e.user == 'amine' ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
+                > {e.msg}</p>
                 <img src={threeDots} className='hidden group-hover:block w-4  cursor-pointer' />
             </div>))}
         </div>

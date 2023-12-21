@@ -34,6 +34,9 @@
 .custom-shadow {
   box-shadow: 18px 11px 17px rgba(0, 0, 0, 0.5);
 }
+.pink-shadow{
+  box-shadow: 18px 11px 17px #382b6185;
+}
 
 .text-gradient {
   background: radial-gradient(
@@ -154,4 +157,30 @@
 .white__gradient {
   background: rgba(255, 255, 255, 0.6);
   filter: blur(750px);
+}
+input[type='radio'] {
+  box-sizing: border-box;
+  appearance: none;
+  background: transparent;
+  border: 2px solid white;
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+}
+
+input[type='radio']:checked {
+  background: #1D203E;
+  animation: radioChecked 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes radioChecked {
+  0%{
+    transform: rotateX(0deg);
+    transform: translateY(-5px);
+  }
+  50%{
+    transform: rotateY(100deg),;
+  }
+  100%{
+    transform: rotateX(180deg);
+  }
 }

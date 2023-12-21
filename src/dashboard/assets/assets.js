@@ -15,6 +15,10 @@ import addUser from './adduser.svg'
 import groupusers from './groupusers.svg'
 import sendMessage from './sendMessage.svg'
 import threeDots from './threedots.svg'
+import add from './add.svg'
+import X from './X.svg'
+import roundedAccept from './roundedAccept.svg'
+import roundedX from './roundedX.svg'
 
 export {
     generalChat,
@@ -33,5 +37,9 @@ export {
     addUser,
     groupusers,
     sendMessage,
-    threeDots    
+    threeDots,
+    add,
+    X,
+    roundedX,
+    roundedAccept    
 }
