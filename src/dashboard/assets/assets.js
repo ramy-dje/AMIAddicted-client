@@ -13,6 +13,8 @@ import deleteIcon from './delete.svg'
 import settings from './settings.svg'
 import addUser from './adduser.svg'
 import groupusers from './groupusers.svg'
+import sendMessage from './sendMessage.svg'
+import threeDots from './threedots.svg'
 
 export {
     generalChat,
@@ -29,5 +31,7 @@ export {
     settings,
     deleteIcon,
     addUser,
-    groupusers    
+    groupusers,
+    sendMessage,
+    threeDots    
 }

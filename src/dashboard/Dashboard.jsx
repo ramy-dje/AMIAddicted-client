@@ -3,6 +3,8 @@ import RightSideBar from './components/RightSideBar'
 import LeftSideBare from './components/LeftSideBare'
 import MyDoctor from './components/MyDoctors'
 import MyPatient from './components/MyPatient'
+import GeneralChat from './components/GeneralChat'
+
 
 const Dashboard = () => {
   return (
@@ -11,7 +13,7 @@ const Dashboard = () => {
           <LeftSideBare />
         </div>
         <div className='md:w-3/5  w-4/5 bg-[#1D203E] h-[100vh] flex items-center justify-center'>
-          <MyPatient />
+          <GeneralChat />
         </div>
         <div className='w-1/5 bg-[#171825] h-[100vh] hidden md:block'>
           <RightSideBar />
