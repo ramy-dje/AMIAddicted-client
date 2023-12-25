@@ -1,12 +1,17 @@
 import React from 'react'
 import {rightSideBarIcons} from '../constants/Dashboard'
+import { Link } from 'react-router-dom'
+
 const RightSideBar = () => {
   return (
     <div className='flex h-screen flex-col px-4'>
         <div className='flex justify-between border-b border-gray-700 text-white h-8 p-1'>
             {
-                rightSideBarIcons.map((e)=>(
-                    <img src={e.icon} />
+                rightSideBarIcons.map((e,i)=>(
+                    <Link to={e.link}>
+                        <img src={e.icon} key={i}/>
+                    </Link>
+                  
                 ))
             }
         </div>

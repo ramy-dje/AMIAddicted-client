@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100vh;
+    background: #1D203E;
+}
+
+.main .container {
+
+    margin-left: 2%;
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    position: relative;
+    max-width: 990px;
+    height: 75%;
+    border-radius: 30px;
+    background: #171825;
+    box-shadow: 18px 11px 17.6px -2px rgba(0, 0, 0, 0.50);
+}
+
+
+.image {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    width: 310px;
+    height: 100%;
+}
+
+.image .userImage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 42px 300px 300px 42px;
+
+
+}
+
+.pic{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 42px 300px 300px 42px;
+
+}
+
+.pic:hover{
+    border-radius: 42px 300px 300px 42px;
+    border: 2px solid #146B9C;
+    opacity: 50%;
+}
+
+
+.main .container p {
+    position: absolute;
+    font-size: 2.5em;
+    color: white;
+    top: 36%;
+    left: 7%;
+}
+
+.main .container .form .column{ 
+position: absolute;
+    display: flex;
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    left: 235px;
+}
+
+
+.main .container .form .column h1 {
+    position: relative;
+    left: -15px;
+    font-weight: 500;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    margin-left: 0px;
+    font-size: 40px;
+    color: white;
+}
+
+.main .container .form .column .input-inside .f-label,
+.main .container .form .column .input-outside .f-label {
+    position: absolute;
+    background-color: #171825;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    top: 0;
+    left: 25px;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.main .container .form .column .input-inside .last-label {
+
+    position: absolute;
+    background-color: #171825;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    top: 0;
+    left: 35px;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.input-inside {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 60%;
+    left: 27px;
+    margin-bottom: 5px;
+    min-width: 230px;
+}
+
+.input-outside {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: 60%;
+    left: 60px;
+    margin-bottom: 5px;
+    min-width: 220px;
+}
+
+.main .container .form .column input {
+    position: absolute;
+    width: 90%;
+    height: 45px;
+    padding: 5px 15px;
+    outline: none;
+    font-weight: 500;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: transparent;
+    font-size: large;
+}
+
+
+.main .container .form .column input:focus {
+    border: 3px solid white;
+
+
+}
+
+
+.main .container .form input:hover {
+    border: 2.5px solid #146B9C;
+
+}
+
+
+.main .container .form .column input[type="date"] {
+    color: transparent;
+}
+
+.main .container .form .column input[type="date"]:valid {
+    color: white;
+}
+
+.button-sub {
+    position: relative;
+    left: -17px;
+    height: 40px;
+    width: 45%;
+    margin-top: 10px;
+    min-width: 220px;
+    margin-bottom: 11px;
+}
+
+
+.main .container .form .column .button-sub input {
+
+    width: 90%;
+    height: 100%;
+    color: #1D203E;
+    padding: 0px;
+    border-radius: 10px;
+    border: 1.5px solid white;
+    cursor: pointer;
+    background-color: white;
+    font-size: 23px;
+    font-weight: 500;
+    font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+.main .container .form .column .button-sub input:hover {
+    background-color: #1D203E;
+    border: 2px solid white;
+    color: white;
+
+
+}
+
+
+@media (max-width:500px) {
+
+    .main .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0;
+        margin-left: 0;
+        box-shadow: none;
+        width: 100%;
+
+    }
+
+    .image {
+        top: 5%;
+        width: 100%;
+        height: 32%;
+        display: flex;
+        justify-content: center;
+        min-width: 200px;
+        max-height: 195px;
+        border-radius: 300px;
+    }
+
+    .image .userImage {
+        min-width: 195px;
+        width: 44%;
+        height: 100%;
+        border-radius: 300px;
+    }
+
+    .image .userImage .pic{
+        height: 100%;
+    width: 100%;
+    border-radius: 300px;
+    max-width: 200px;
+    }
+    
+
+    .main .container .image .userImage .pic:hover {
+        border-radius: 300px;
+        border: 2px solid #146B9C;
+        opacity: 50%;
+    }
+
+    .main .container p {
+        font-size: 2em;
+        top: 14%;
+        left: 37%;
+
+    }
+
+
+    .main .container .form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main .container .form form {
+        display: flex;
+        width: 290px;
+        justify-content: center;
+
+    }
+
+    .main .container .form .column{
+        width: 90%;
+        height: auto;
+        margin-top: 217px;
+        position: static;
+    
+    }
+
+    .main .container .form .column h1 {
+        position: static;
+        margin-top: 0;
+      
+    }
+
+    .main .container .form .column .input-inside,
+    .main .container .form .column .input-outside {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        left: 0;
+        width: 100%;
+        margin-bottom: 0;
+        min-width: 220px;
+    }
+
+
+    .main .container .form .column input{
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+
+
+    }
+
+    .main .container .form .column .input-inside .f-label,
+    .main .container .form .column .input-outside .f-label {
+        left: 20px;
+        font-size: medium;
+
+    }
+
+    .main .container .form .column .input-inside .last-label {
+        left: 20px;
+        font-size: medium;
+    }
+
+    .main .container .form .column .button-sub {
+        left: 0;
+        width: 100%;
+    }
+
+
+    .main .container .form .column .button-sub input {
+
+        width: 100%;
+    }
+
+}

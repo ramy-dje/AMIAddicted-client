@@ -1,0 +1,135 @@
+.chat{
+    width: 100%;
+    min-height: 120vh;
+    background-color: #1D203E;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+}
+.chat .cardHeader{
+width: 66px;
+height: 125%;
+left: 122px;
+top: 100px;
+position: absolute;
+transform: rotate(-90deg);
+transform-origin: 0 0;
+background: #171825;
+box-shadow: 9px 7px 10.100000381469727px 1px rgba(0, 0, 0, 0.25);
+border-radius: 52px;
+}
+.chat .chat-container{
+width: 75%;
+height: 580px;
+left: 126px;
+top: 120px;
+position: relative;
+background: #171825;
+box-shadow: 10px 8px 11.300000190734863px rgba(0, 0, 0, 0.25);
+border-radius: 13px;
+
+}
+.chat .contacts{
+width: 66px;
+height: 560px;
+left: 45px;
+top: 120px;
+position: absolute;
+background: #171825;
+box-shadow: 9px 7px 10.100000381469727px 1px rgba(0, 0, 0, 0.25);
+border-radius: 52px;
+
+}
+.chat .contacts .mon-contact{
+display: flex;
+gap : 10px ;
+align-items: center;
+width: 90%;
+height: 60px;
+font-size: 25px;
+padding-inline: 10px;
+border-bottom: 1px solid rgb(194, 194, 194);
+
+}
+.chat .messages .me{
+    color: white;
+    padding: 3px 3px;
+    border-radius: 10px;
+    background-color: rgb(58, 134, 248);
+    width: fit-content;
+    margin: 4px 4px;
+}
+
+.chat form{
+height: 10%;
+width: 90%;
+display: flex;
+gap: 15px;
+margin-top: 10px;
+margin-bottom: 20px;
+justify-content: center;
+position: relative;
+left: 30px;
+top: 85%;
+} 
+.chat form input{
+background-color: #1D203E;
+padding: 5px 10px;
+border-radius: 100px;
+width: 100%;
+border : none ;
+padding-right: 130px;
+outline: none;
+}
+
+.chat form button{
+width: 50px;
+height: 50px;
+border-radius: 50%;
+background-color: #1D203E;
+color: white;
+font-size: 15px;
+position: absolute;
+top:10%;
+left: 90%;
+}
+.chat .messages{
+margin-top: 15px;
+height: 80%;
+overflow-y: auto;
+position: absolute;
+border-radius: 25px;
+width: 100%;
+}
+.chat .messages .me{
+color: white;
+padding: 3px 3px;
+border-radius: 10px;
+background-color: linear-gradient(90deg, #3E68B9 0%, #7EA1E6 100%);
+width: fit-content;
+margin: 4px 4px;
+}
+.chat .messages .notme{
+color: white;
+padding: 3px 3px;
+border-radius: 10px;
+background-color:  #2C2F48;
+width: fit-content;
+max-width: 50%;
+margin: 4px 4px;
+}
+.chat .contacts .mon-contact{
+display: flex;
+gap : 10px ;
+align-items: center;
+width: 70%;
+position: relative;
+border-radius: 50%;
+height: 60px;
+font-size: 25px;
+padding-inline: 10px;
+border-bottom: 1px solid rgb(194, 194, 194);
+}
+
+ 

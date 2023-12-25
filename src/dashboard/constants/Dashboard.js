@@ -3,51 +3,63 @@ import {chat, generalChat,home,invitations,myDoctors,myPatients,notifications,qu
 const leftSideBarIcons = [
     {
         title:'Home',
-        icon : home
+        icon : home,
+        link:''
     },
     {
         title:'questions',
-        icon : questions
+        icon : questions,
+        link:'Questions'
     },
     {
         title:'Scores of prediction',
-        icon :scoreOfPrediction
+        icon :scoreOfPrediction,
+        link:''
     },
     {
         title:'invitations',
-        icon :invitations
+        icon :invitations,
+        link:'Invitations'
     },
     {
         title:'My doctors',
-        icon :myDoctors
+        icon :myDoctors,
+        link:'doctorsList'
     },
     {
         title:'My patients',
-        icon :myPatients
+        icon :myPatients,
+        link:'PatientsList'
     },
     {
         title:'Update questions',
-        icon :updatequestions
+        icon :updatequestions,
+        link:'UpdateQuestions/:id'
     },
     {
         title:'My statistics',
-        icon : statistics
+        icon : statistics,
+        link:''
     },
     {
         title:'community',
-        icon : generalChat
+        icon : generalChat,
+        link:'GeneralChat'
     },
 
 ];
 const rightSideBarIcons = [
     {
-        icon : chat
+        icon : chat,
+        link:'ChatPage'
     },
     {
-        icon : notifications
+        icon : notifications,
+        link:'Notifications'
     },
     {
-        icon : settings
+        icon : settings,
+        link:'Edit'
     }
 ]
 export {leftSideBarIcons,rightSideBarIcons} ;

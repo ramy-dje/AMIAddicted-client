@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css?family=Aclonica:400');
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+}
+
+.blue-box {
+    width: 30%;
+    height: 100%;
+    background-color: #11101D;
+    background: linear-gradient(90deg, rgba(5, 22, 32, 1) 0%, rgba(19, 80, 115, 1) 33%, rgba(16, 86, 125, 1) 39%, rgba(17, 16, 29, 1) 100%);
+    position: relative;
+    min-width: 320px;
+}
+
+.white-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    RIGHT: 20px;
+    width: 70%;
+    height: 100%;
+    border-radius: 25px 0px 0px 25px;
+    background: white;
+}
+
+.text-pink-box {
+    position: absolute;
+    width: 95%;
+    margin-top: 75px;
+    margin-right: 5px;
+}
+
+.text-pink-box p {
+
+    color: #FFF;
+    text-align: center;
+    font-family: Aclonica;
+    font-size: 33px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.mannette-1EL {
+    width: 110%;
+    min-width: 230px;
+    position: absolute;
+    left: 50px;
+    top: 210px;
+    z-index: 99;
+}
+
+.first-svg {
+    position: absolute;
+}
+
+.second-svg {
+    position: absolute;
+    bottom: 0;
+}
+
+.first-svg-white {
+    position: absolute;
+    display: none;
+}
+
+.second-svg-white {
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
+
+
+section .content {
+    position: relative;
+    margin-left: 80px;
+    width: 80%;
+    max-width: 700px;
+    HEIGHT: 100%;
+}
+
+section .content .form {
+  
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+    margin-top: 115px;
+}
+
+
+section .content h2 {
+
+    font-weight: 400;
+    margin-top: 35px;
+    min-width: 295px;
+    font-size: 50px;
+   text-align: center;
+
+    
+}
+
+
+section .content .form .flex_inputs {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+section .content .form .inputA .form-label {
+    font-weight: 600;
+    font-size: LARGER;
+    position: relative;
+    top: 10px;
+    left: 11px;
+    background: white;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.inputA {
+    width: 100%;
+    height: 68px;
+}
+
+section .content .form .inputA input,
+section .content .form .inputA select {
+    width: 100%;
+    height: 40px;
+    padding: 5px 15px;
+    outline: none;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: transparent;
+    margin-bottom: 10px;
+    font-size: large;
+    color: black;
+
+}
+
+section .content .form .inputpic {
+    width: 100%;
+    JUSTIFY-CONTENT: center;
+    display: flex;
+    height: 23%;
+    POSITION: absolute;
+    top: -100px;
+
+}
+
+
+section .content .form .inputpic .circle-input {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 17%;
+    min-width: 105px;
+    max-height: 95px;
+    background-color: rgb(169 169 169 / 30%);
+    border: 2px solid;
+    height: 100%;
+   display: flex;
+    justify-content: center;
+    font-size: 0.1px;
+}
+
+section .content .form .inputpic .circle-input:hover {
+    border: 3px solid grey;
+
+}
+
+section .content .form .inputpic label {
+    position: absolute;
+    FONT-SIZE: x-large;
+    font-weight: 100;
+    opacity: 34%;
+    top: 11PX;
+}
+
+section .content .form .inputA input:hover,
+section .content .form .inputA select:hover {
+    border: 3px solid grey;
+
+}
+
+section .content .form .inputA input:focus {
+    border: 3px solid #146B9C;
+
+}
+
+section .content .form .inputA select:focus {
+    border: 3px solid #146B9C;
+
+}
+
+
+section .content .form .flex_inputs .inputA input[type="date"] {
+    color: white;
+}
+
+section .content .form .flex_inputs .inputA input[type="date"]:valid {
+    color: black;
+}
+
+.button_sub {
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.User {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+
+}
+
+section .content .form .button_sub input {
+
+
+    height: 40px;
+    width: 100%;
+    color: white;
+    border-radius: 10px;
+    border: 1.5px solid #146B9C;
+    cursor: pointer;
+    background-color: #146B9C;
+    font-size: 25px;
+    font-weight: 500;
+
+}
+
+section .content .form .button_sub input:hover {
+    background-color: #131127;
+    border: 1.5px solid #131127;
+
+
+}
+
+
+
+@media (max-width:460px) {
+
+
+    .blue-box {
+        display: none;
+    }
+
+    .white-box {
+        background: linear-gradient(90deg, rgba(5, 22, 32, 1) 0%, rgba(19, 80, 115, 1) 33%, rgba(16, 86, 125, 1) 39%, rgba(17, 16, 29, 1) 100%);
+        right: 0px;
+        width: 100%;
+        border-radius: 0%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    section .content {
+        position: absolute;
+        display: flex;
+        margin-left: 0px;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+
+    section .content h2 {
+        margin-top: 15px;
+        font-size: 2.4em;
+        color: #FFF;
+    }
+
+    section .content .form {
+        width: 90%;
+        margin-top: 105px;
+        justify-content: center;
+    }
+
+    section .content .form form {
+        width: 80%;
+    }
+
+    section .content .form .inputpic {
+        width: 80%;
+    }
+
+    section .content .form .inputpic .circle-input {
+        border: 1px solid white;
+    }
+
+    .inputA {
+        width: 100%;
+        position: relative;
+        height: 35px;
+        margin-bottom: 25px;
+        margin-top: 10px;
+
+    }
+
+    section .content .form .inputA input,
+    section .content .form .inputA select {
+        height: 100%;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0px;
+        font-size: 16px;
+        border: 2px solid white;
+        border-radius: 8px;
+        color: white;
+       
+    }
+
+    section .content .form .flex_inputs .inputA input[type="date"] {
+        color: transparent;
+    }
+
+    section .content .form .flex_inputs .inputA input[type="date"]:valid {
+        color: white;
+    }
+
+    section .content .form .inputA .form-label {
+        border-radius: 5px;
+        height: 18px;
+        padding: 0 8px;
+        color: #000;
+        font-size: small;
+        position: absolute;
+        background: white;
+        top: -10px;
+
+    }
+
+    section .content .form .inputA input:hover,
+    section .content .form .inputA select:hover {
+        border: 2px solid rgba(255, 255, 255, 0.5);
+
+    }
+
+    section .content .form .inputA input:focus,
+    section .content .form .inputA select:focus {
+        border: 3px solid white;
+
+    }
+
+    section .content .form .flex_inputs {
+        display: block;
+        width: 100%;
+    }
+
+
+    .button_sub {
+        height: 35px;
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    section .content .form .button_sub input {
+
+        height: 35px;
+        color: #146B9C;
+        border: 1.5px solid white;
+        cursor: pointer;
+        background-color: white;
+        font-size: 23px;
+     
+
+    }
+
+    section .content .form .button_sub input:hover {
+        background-color: #146B9C;
+        border: 1.5px solid #146B9C;
+        color: white;
+
+
+    }
+
+
+    .User p {
+        color: white;
+    }
+
+    .User {
+
+        margin-top: 3px;
+    }
+
+    .first-svg-white {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+    }
+
+    .second-svg-white {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: block;
+
+    }
+
+}
+
+@media (max-width:670px)and (min-width:461px) {
+
+    .main {
+        JUSTIFY-CONTENT: center;
+        background-color: #11101D;
+        background: linear-gradient(30deg, rgba(5, 22, 32, 1) 0%, rgba(19, 80, 115, 1) 33%, rgba(16, 86, 125, 1) 39%, rgba(17, 16, 29, 1) 100%);
+    }
+
+    .white-box {
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .blue-box {
+        display: none;
+    }
+
+    section .content {
+        margin-left: 0;
+    }
+}
+
+
+@media (max-width:1040px)and (min-width:940px) {
+
+    .blue-box {
+        width: 33%;
+    }
+
+    .white-box {
+        width: 67%;
+    }
+
+    .text-pink-box p {
+        font-size: 32px;
+    }
+
+    .mannette-1EL {
+        width: 108%;
+        position: absolute;
+        left: 58px;
+        top: 209px;
+    }
+
+}
+
+@media (max-width:940px)and (min-width:860px) {
+
+    .blue-box {
+        width: 40%;
+    }
+
+    .text-pink-box p {
+        font-size: 32px;
+    }
+
+    .mannette-1EL {
+        width: 105%;
+        position: absolute;
+        left: 64px;
+        min-width: 200px;
+        top: 205px;
+    }
+
+}
+
+@media (max-width:860px)and (min-width:670px) {
+    section .content .form {
+        margin-top: 95px;
+    justify-content: center;
+    }
+
+    section .content .form form {
+        width: 100%;
+    }
+
+    section .content h2 {
+       
+        position: relative;
+        top: 10px;
+        margin-top: 0px;
+        font-size: 43px;
+
+    }
+
+    section .content .form .inputpic {
+        top: -80px;
+    height: 20%;    
+    }
+
+    section .content .form .inputpic .circle-input{
+        max-height: 90px;
+        min-width: 100px;    
+    }
+
+
+    .text-pink-box p {
+        font-size: 32px;
+    }
+
+    section .content .form .flex_inputs {
+        flex-direction: column;
+        gap: 0%;
+
+    }
+
+    .inputA {
+        height: 60px;
+    }
+
+    .mannette-1EL {
+        width: 105%;
+        position: absolute;
+        left: 64px;
+        min-width: 200px;
+        top: 205px;
+    }
+
+    .User{
+        margin-top: 3px;
+    }
+}

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {generalChat,home,invitations,myDoctors,myPatients,questions,scoreOfPrediction,statistics,updatequestions} from '../assets/assets'
 import {leftSideBarIcons} from '../constants/Dashboard'
+import {Link} from 'react-router-dom'
 
 const LeftSideBare = () => {
   const [ActiveElement, setActiveElement] = useState('Home')
@@ -11,14 +12,17 @@ const LeftSideBare = () => {
       </div>
       <div className='flex flex-col gap-2 pt-3'>
        {
-        leftSideBarIcons.map((e,i)=>( 
-          <div 
-            className={`flex items-center gap-2 text-white px-2 sm:px-4 py-2 rounded-lg mb-1 cursor-pointer ${e.title == ActiveElement && 'bg-[#1D203E]'}`}
-            onClick={()=>setActiveElement(e.title)}  
-          >
-            <img src={e.icon} alt="" className='text-xl'/>
-            <p className='hidden sm:block'>{e.title}</p> 
-          </div>
+        leftSideBarIcons.map((e,i)=>(
+          <Link to={e.link}>
+            <div
+              key={i} 
+              className={`flex items-center gap-2 text-white px-2 sm:px-4 py-2 rounded-lg mb-1 cursor-pointer ${e.title == ActiveElement && 'bg-[#1D203E]'}`}
+              onClick={()=>setActiveElement(e.title)}  
+            >
+              <img src={e.icon} alt="" className='text-xl'/>
+              <p className='hidden sm:block'>{e.title}</p> 
+            </div>
+          </Link> 
         ))
        }
       </div>

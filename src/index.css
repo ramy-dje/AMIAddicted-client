@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Adamina&family=Nunito:ital,wght@0,200;1,200&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -32,7 +33,7 @@
 }
 /* In your CSS file or style tag */
 .custom-shadow {
-  box-shadow: 18px 11px 17px rgba(0, 0, 0, 0.5);
+  box-shadow: 9px 11px 17px rgba(0, 0, 0, 0.5);
 }
 .pink-shadow{
   box-shadow: 18px 11px 17px #382b6185;
