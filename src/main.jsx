@@ -6,11 +6,14 @@ import Dashboard from './dashboard/Dashboard';
 import {BrowserRouter} from 'react-router-dom'
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       {//<App />
-        <Dashboard />
+       <Dashboard />
+        //<SignUp />
+        //<Login />
       }
     </BrowserRouter>
   </React.StrictMode>

@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css?family=Aclonica:400');
+@import url('https://fonts.cdnfonts.com/css/adamina');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'adamina';
+}
+
+.main {
+    overflow: hidden;
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+}
+
+.blue-box {
+    width: 30%;
+    height: 100%;
+    background-color: #11101D;
+    position: relative;
+    min-width: 340px;
+}
+
+
+.first-svg {
+    position: absolute;
+    width: 488.614px;
+    height: 454.518px;
+    flex-shrink: 0;
+}
+
+.second-svg {
+    position: absolute;
+    width: 488.614px;
+    height: 454.518px;
+    flex-shrink: 0;
+    bottom: 0;
+
+}
+
+
+.first-svg-white {
+    position: absolute;
+    display: none;
+}
+
+.second-svg-white {
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
+
+
+.white-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    RIGHT: 20px;
+    padding-left: 40px;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    border-radius: 25px 0px 0px 25px;
+    background: white;
+}
+
+.text-pink-box {
+    position: absolute;
+    width: 95%;
+    margin-top: 25%;
+    margin-right: 5px;
+}
+
+.text-pink-box p {
+
+    color: #FFF;
+    text-align: center;
+    font-family: Aclonica;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.mannette-1EL {
+    width: 110%;
+    min-width: 230px;
+    position: absolute;
+    left: 50px;
+    top: 230px;
+    z-index: 99;
+}
+
+section .content {
+    position: relative;
+    padding-inline: 20px;
+    width: 90%;
+    HEIGHT: 100%;
+}
+
+section .content .form {
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+    margin-top: 60px;
+}
+
+
+section .content .form form{
+
+  width: 100%;
+}
+
+
+section .content h2 {
+
+    font-weight: 400;
+    margin-top: 80px;
+    min-width: 320px;
+    font-size: 48px;
+    text-align: center;
+}
+
+
+section .content .form .inputA .form-label {
+    font-size: 20px;
+    position: relative;
+    top: 10px;
+    left: 11px;
+    background: white;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.inputA {
+    width: 100%;
+    height: 68px;
+    MIN-WIDTH: 50px;
+    margin-bottom: 45px 
+}
+
+section .content .form .inputA input{
+    width: 100%;
+    height: 45px;
+    padding: 5px 15px;
+    outline: none;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: transparent;
+    margin-bottom: 10px;
+    font-size: 17px;
+    ;
+    color: black;
+
+}
+
+
+
+section .content .form .inputA input:hover {
+    border: 2px solid grey;
+
+}
+
+section .content .form .inputA input:focus {
+    border: 2px solid #146B9C;
+
+}
+
+.button_sub {
+    width: 100%;
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.User {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.User p {
+    font-size: 18px;
+}
+
+section .content .form .button_sub input {
+
+    height: 45px;
+    width: 100%;
+    color: white;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    cursor: pointer;
+    background-color: black;
+    font-size: 25px;
+    font-weight: 500;
+
+}
+
+section .content .form .button_sub input:hover {
+    background-color: #146B9C;
+    border: 1.5px solid #146B9C;
+
+}
+
+
+@media (max-width:500px) {
+
+
+    .blue-box {
+        display: none;
+    }
+
+    .white-box {
+        background-color: #11101D;
+        right: 0px;
+        width: 100%;
+        border-radius: 0%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 0px;
+        overflow: hidden;
+    }
+
+
+    .first-svg-white {
+        position: absolute;
+        display: block;
+        width: 444px;
+        height: 436px;
+        flex-shrink: 0;
+        top: 0;
+        left: 0%;
+        
+    }
+
+    .second-svg-white {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 488.614px;
+        height: 454.518px;
+        flex-shrink: 0;
+    }
+
+    section .content {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+
+    section .content h2 {
+        margin-top: 75px;
+        font-size: 40px;
+        min-width: 300px;
+        color: #FFF;
+    }
+
+    section .content .form {
+        width: 90%;
+        margin-top: 105px;
+        justify-content: center;
+    }
+
+    section .content .form form {
+        width: 90%;
+    }
+
+    .inputA {
+        width: 100%;
+        position: relative;
+        height: 35px;
+        margin-bottom: 55px;
+        margin-top: 10px;
+
+    }
+
+    section .content .form .inputA input{
+
+        height: 42px;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0px;
+        font-size: 14px;
+        border: 2px solid white;
+        border-radius: 10px;
+        color: white;
+
+    }
+
+    section .content .form .inputA .form-label {
+        border-radius: 5px;
+        height: 19px;
+        padding-block: 2px;
+        color: #000;
+        font-size: small;
+        position: absolute;
+        padding-inline: 7px;
+        background: white;
+        top: -10px;
+
+    }
+
+    section .content .form .inputA input:hover{
+        border: 2px solid rgba(255, 255, 255, 0.5);
+
+    }
+
+    section .content .form .inputA input:focus {
+        border: 2.5px solid #146B9C;
+
+    }
+
+
+    .button_sub {
+        height: 35px;
+        width: 100%;
+        margin-top: 85px;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    section .content .form .button_sub input {
+
+        height: 35px;
+        color: #146B9C;
+        border: 1.5px solid white;
+        cursor: pointer;
+        background-color: white;
+        font-size: 21px;
+
+
+    }
+
+    section .content .form .button_sub input:hover {
+        background-color: #146B9C;
+        border: 1.5px solid #146B9C;
+        color: white;
+
+
+    }
+
+
+    .User {
+
+        margin-top: 5px;
+    }
+
+    .User p {
+        color: white;
+        font-size: 14px;
+
+    }
+
+}
+
+@media (max-width:730px)and (min-width:500px) {
+
+
+    .white-box {
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border-radius: 0px;
+        padding-left: 0%;
+    }
+
+    .blue-box {
+        display: none;
+    }
+
+    section .content {
+        margin-left: 0;
+    }
+}
+
