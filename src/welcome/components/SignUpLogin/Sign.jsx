@@ -128,7 +128,7 @@ function SignUp() {
 
             <form action="" onSubmit={handleSubmit}>
 
-              <div className="inputpic">
+              <div className="inputpic" >
                 <label htmlFor="">Add<br />Picture</label>
                 <input type="file" name="avatar" onChange={handleFileChange} accept="image/*" className="circle-input" />
               </div>

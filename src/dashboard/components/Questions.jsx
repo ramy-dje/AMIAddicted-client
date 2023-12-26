@@ -26,7 +26,7 @@ const Questions = () => {
 
 
   return (
-    <div className='flex flex-col gap-2 px-6 py-6 h-screen items-center overflow-y-auto '>
+    <div className='flex flex-col gap-2 px-6 pt-6 pb-2 h-screen items-center overflow-y-auto '>
         <div className='flex'>
             {
                 arr.map((e,i)=>(
@@ -46,7 +46,9 @@ const Questions = () => {
         )}
          
         </div>
-      
+      {arr && current == arr.length && <div className='flex justify-end w-full items-end'>
+          <button  className='border-none bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] text-lg rounded-lg text-white px-6 py-2'>Update changes</button>
+        </div>}
     </div>
   )
 }

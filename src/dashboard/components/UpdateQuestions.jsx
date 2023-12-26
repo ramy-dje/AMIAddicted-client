@@ -43,10 +43,13 @@ const UpdateQuestions = () => {
     <div className='w-full h-screen sm:p-4 pt-2 flex flex-col items-center overflow-y-auto'>
         {
             surveyQuestions && surveyQuestions.map((e,ii)=>(
-                <QuestionCard question={e.question} answers={e.answers} questionNumber={ii} surveyQuestions={surveyQuestions} setsurveyQuestions={setsurveyQuestions}/>
+                <QuestionCard key={ii} question={e.question} answers={e.answers} questionNumber={ii} surveyQuestions={surveyQuestions} setsurveyQuestions={setsurveyQuestions}/>
             ))
         }
         <img src={add} alt="" className='w-12 cursor-pointer'  onClick={addQuestion}/>
+        <div className='flex justify-end w-full mt-8'>
+          <button onClick={handleUpdateSurvey} className='border-none bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] text-lg rounded-lg text-white px-6 py-2'>Update changes</button>
+        </div>
     </div>
   )
 }
@@ -91,7 +94,7 @@ function QuestionCard({question,answers,questionNumber,surveyQuestions,setsurvey
     return (
       <div className='w-10/12 min-h-[220px] bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] rounded-lg sm:p-4 p-1 sm:pt-4 pt-4 text-white custom-shadow mb-6  relative group'>
             <input  className='w-full bg-transparent outline-none text-lg border-b-2 border-gray-400 text-md' value={question} placeholder='the question' onChange={(e)=>handleChangeQuestion(e.target.value,questionNumber)}/>
-            {answers && answers.map((ans,i)=>(<div className='flex justify-between items-center text-white text-sm'>
+            {answers && answers.map((ans,i)=>(<div key={i} className='flex justify-between items-center text-white text-sm'>
                 <input type="text" className='bg-transparent outline-none w-full mr-4 '  placeholder='answer' onChange={(e)=>handleChangeAnswers(e.target.value,questionNumber,i)} value={ans.answer}/>
                 <div className='flex items-center'>
                     <input type="number" min={0} max={5} value={ans.value} className='bg-transparent outline-none sm:w-12 w-9 m-0' placeholder='value' onChange={(e)=>handleChangeValues(e.target.value,questionNumber,i)}/>

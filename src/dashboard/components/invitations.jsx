@@ -12,7 +12,7 @@ const Invitations = () => {
     }
     useEffect(()=>{
       getInvitations();
-    },[]);
+    },[invitations]);
   return (
    <div className='max-h-screen overflow-auto  sm:w-4/5 w-full p-5'>
          {
@@ -30,6 +30,13 @@ function Invitation({firstname,lastname,gender,birthday,email,role,id,avatar}) {
         const res = await axios.put('http://localhost:3000/api/acceptUser/'+id)
         console.log(res)
     }
+    async function handleDelete(id) {
+      console.log('sdsd')
+      const res = await axios.delete('http://localhost:3000/api/deleteUser/'+id)
+      console.log(res)
+      console.log(deleted)
+    
+  }
 
   return (
     <div 
@@ -55,7 +62,7 @@ function Invitation({firstname,lastname,gender,birthday,email,role,id,avatar}) {
         </div>
         <div className='flex '>
             <img src={roundedAccept} alt="" className='w-8 fill-red-600 ' onClick={()=>handleCheck(id)}/>
-            <img src={roundedX} alt=""  className='w-8'/>
+            <img src={roundedX} alt=""  className='w-8' onClick={()=>handleDelete(id)}/>
         </div>
     </div>
   )
