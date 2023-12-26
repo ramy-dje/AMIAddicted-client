@@ -34,7 +34,7 @@ const leftSideBarIcons = [
     {
         title:'Update questions',
         icon :updatequestions,
-        link:'UpdateQuestions/:id'
+        link:'UpdateSurveys'
     },
     {
         title:'My statistics',

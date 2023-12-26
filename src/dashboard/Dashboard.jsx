@@ -23,11 +23,11 @@ const Dashboard = () => {
         </div>
         <div className='md:w-3/5  w-full bg-[#1D203E] h-[100vh] flex items-center justify-center'>
           <Routes>
-            <Route path='MyDoctor/:id' Component={MyDoctor}/>
-            <Route path='MyPatient/:id' Component={MyPatient}/>
+            <Route path='doctorsList/MyDoctor' Component={MyDoctor}/>
+            <Route path='PatientsList/MyPatient' Component={MyPatient}/>
             <Route path='GeneralChat' Component={GeneralChat}/>
             <Route path='Questions' Component={Questions}/>
-            <Route path='UpdateQuestions/:id' Component={UpdateQuestions}/>
+            <Route path='UpdateSurveys/UpdateQuestions' Component={UpdateQuestions}/>
             <Route path='UpdateSurveys' Component={UpdateSurveys}/>
             <Route path='Invitations' Component={Invitations}/>
             <Route path='ChatPage' Component={ChatPage}/>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {X,add,updatequestions} from '../assets/assets'
-
+import { Link } from 'react-router-dom'
 const UpdateSurveys = () => {
   return (
     <div className='h-screen sm:w-4/5 w-full p-5'>
@@ -10,18 +10,12 @@ const UpdateSurveys = () => {
         <div className='flex items-center justify-between px-5 h-[75px] bg-[#171825] rounded-lg custom-shadow text-white mb-8'>
             <p>question numero 1</p>
             <div className='flex items-center gap-2'>
-                <img src={updatequestions} alt="" className='w-6'/>
+                <Link to={'UpdateQuestions'}><img src={updatequestions} alt="" className='w-6'/></Link>
                 <img src={X} alt="" className='w-10'/>
             </div>
         </div>
 
-        <div className='flex items-center justify-between px-5 h-[75px] bg-[#171825] rounded-lg custom-shadow text-white mb-8'>
-            <p>question numero 1</p>
-            <div className='flex items-center gap-2'>
-                <img src={updatequestions} alt="" className='w-6'/>
-                <img src={X} alt="" className='w-10'/>
-            </div>
-        </div>
+      
 
        
         

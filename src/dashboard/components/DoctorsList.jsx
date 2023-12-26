@@ -1,6 +1,7 @@
 import React, { useState ,useEffect} from 'react';
 import InfoCard from './infocard'; // Import the new component
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const DoctorsList = () => {
   const [doctorsList, setDoctorsList] = useState([]);
@@ -18,7 +19,7 @@ const DoctorsList = () => {
       
       {
         doctorsList && doctorsList.map((e)=>
-          <InfoCard firstname={e.Nom} lastname={e.Prenom} role={e.role} id={e._id} avatar={e.avatar} />
+         <Link to={'MyDoctor'}> <InfoCard firstname={e.Nom} lastname={e.Prenom} role={e.role} id={e._id} avatar={e.avatar} /> </Link>
         )
       }  
 
