@@ -19,17 +19,19 @@ const Questions = () => {
    
     
     useEffect(()=>{
-      axios.get('http://localhost:3000/api/getNewQst').then((res)=>{setsurvey(res.data[0].list)})
-      survey && calculateNbrOfPages(survey);
-      //survey && arrayToMatrix(survey,4)
-    },[survey]);
-
+        axios.get('http://localhost:3000/api/getNewQst').then((res)=>{setsurvey(res.data[0].list);console.log(res.data[0].list)})
+        
+    },[]);
+    useEffect(()=>{
+        survey && calculateNbrOfPages(survey);
+    },[survey])
+ 
 
   return (
     <div className='flex flex-col gap-2 px-6 pt-6 pb-2 h-screen items-center overflow-y-auto '>
         <div className='flex'>
             {
-                arr.map((e,i)=>(
+                arr && arr.map((e,i)=>(
                     <div  key={i} className='flex items-center text-white cursor-pointer' onClick={()=>setcurrent(e)}>
                         <p className={`w-12 h-12 ${current == e ? 'bg-[#6D54BF] pink-shadow':'bg-[#1E2F7D] custom-shadow'} rounded-full text-center text-4xl`}>{e}</p>
                         {i < arr.length -1 && <div className={`w-6 h-2 ${current == e ? 'bg-gradient-to-r from-[#6D54BF] to-[#1E2F7D]':'bg-[#1E2F7D]'}`}></div>}
@@ -39,9 +41,11 @@ const Questions = () => {
             }
         </div>
         <div className='flex flex-wrap gap-8 justify-center mt-8 overflow-y-auto pb-6 pr-4'>
-        {survey && survey.slice((current-1)*4,current*4).map((e,i)=>
+        {survey && survey./*slice((current-1)*4,current*4).*/map((e,i)=>
             (
-                <QuestionCard question={e.question} answers={e.answers} key={i} setresponses={setresponses} responses={responses}/>
+                <div key={i} style={{display:(current-1)*4 <= i && (current*4) > i ? 'block' :'none' }}>
+                    <QuestionCard current={current} arr={arr} setcurrent={setcurrent} question={e.question} answers={e.answers}  setresponses={setresponses} responses={responses} />
+                </div>
             )
         )}
          
@@ -54,7 +58,7 @@ const Questions = () => {
 }
 
 
-function QuestionCard({question,answers,setresponses,responses}) {
+function QuestionCard({question,answers,setresponses,responses,setcurrent,arr,current}) {
 
     function handleChange(value,question) {  
         const tempData = responses;
@@ -66,8 +70,10 @@ function QuestionCard({question,answers,setresponses,responses}) {
             } 
         })
         setresponses((prev)=>(found ? setresponses(tempData):[...prev,{question:question,value:value}]))
+        current != arr.length && setcurrent(Math.floor((responses.length+1)/4 +1) )
+        console.log(arr.length)
         console.log(responses)
-        isFilled(question)
+        
     };
     return (
       <div className='w-[350px] h-[220px] bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] rounded-lg p-3 text-white custom-shadow'>
@@ -76,8 +82,8 @@ function QuestionCard({question,answers,setresponses,responses}) {
           answers && answers.map((e,i)=>{
             return (
             <div className='flex gap-1 items-center' key={i}>
-                <input type="radio" onChange={(s)=>{handleChange(s.target.value,question)}}  name={question} value={e.value} />
-                <label >{e.answer}</label>
+                <input id={i+question} type="radio" onChange={(s)=>{handleChange(s.target.value,question);}}  name={question} value={e.value} />
+                <label htmlFor={i+question}>{e.answer}</label>
             </div>
             )
           } 

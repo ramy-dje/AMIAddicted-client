@@ -8,7 +8,9 @@ const DoctorsList = () => {
   async function getDoctors() {
     const {data} = await axios.get('http://localhost:3000/api/getDoctors');
     setDoctorsList(data);
+    console.log(data)
   }
+ 
   useEffect(()=>{
     getDoctors();
   },[]);
@@ -19,7 +21,7 @@ const DoctorsList = () => {
       
       {
         doctorsList && doctorsList.map((e)=>
-         <Link to={'MyDoctor'}> <InfoCard firstname={e.Nom} lastname={e.Prenom} role={e.role} id={e._id} avatar={e.avatar} /> </Link>
+         <Link to={'MyDoctor/'+e._id}> <InfoCard firstname={e.Nom} lastname={e.Prenom} role={e.role} id={e._id} avatar={e.avatar} /> </Link>
         )
       }  
 

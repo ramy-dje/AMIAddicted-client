@@ -13,6 +13,7 @@ import Notifications from './components/notifications/Notifications'
 import Edit from './components/Update/edit'
 import DoctorsList from './components/DoctorsList'
 import PatientsList from './components/PatientsList'
+import MessagingPage from './components/MessagingPage'
 import {Route,Routes} from 'react-router-dom'
 
 const Dashboard = () => {
@@ -23,14 +24,14 @@ const Dashboard = () => {
         </div>
         <div className='md:w-3/5  w-full bg-[#1D203E] h-[100vh] flex items-center justify-center'>
           <Routes>
-            <Route path='doctorsList/MyDoctor' Component={MyDoctor}/>
-            <Route path='PatientsList/MyPatient' Component={MyPatient}/>
+            <Route path='doctorsList/MyDoctor/:id' Component={MyDoctor}/>
+            <Route path='PatientsList/MyPatient/:id' Component={MyPatient}/>
             <Route path='GeneralChat' Component={GeneralChat}/>
             <Route path='Questions' Component={Questions}/>
-            <Route path='UpdateSurveys/UpdateQuestions' Component={UpdateQuestions}/>
+            <Route path='UpdateSurveys/UpdateQuestions/:listName' Component={UpdateQuestions}/>
             <Route path='UpdateSurveys' Component={UpdateSurveys}/>
             <Route path='Invitations' Component={Invitations}/>
-            <Route path='ChatPage' Component={ChatPage}/>
+            <Route path='ChatPage' Component={MessagingPage}/>
             <Route path='Notifications' Component={Notifications}/>
             <Route path='Edit' Component={Edit}/>
             <Route path='PatientsList' Component={PatientsList}/>

@@ -10,7 +10,7 @@ function SignUp() {
     lastname: "",
     gender: "",
     birthday: "",
-    role: "",
+    role: "patient",
     email: "",
     password: "",
     avatar: ""
@@ -25,14 +25,16 @@ function SignUp() {
     console.log(values);
     const { firstname: Nom, lastname: Prenom, gender: Gener, birthday: dt_Naiss, role: Autorisation, email, password, avatar } = values
     let res = null;
-    if (Autorisation == 'admin') {
+   /* if (Autorisation == 'admin') {
       res = await axios.post('http://localhost:3000/api/register/admin', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
     } else if (Autorisation == 'medcin') {
       res = await axios.post('http://localhost:3000/api/register/doctor', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
     } else if (Autorisation == 'patient') {
       res = await axios.post('http://localhost:3000/api/register/patient', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
 
-    }
+    }*/
+    res = await axios.post('http://localhost:3000/api/newRegister', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
+
     console.log(res.data)
   
   }
@@ -129,8 +131,8 @@ function SignUp() {
             <form action="" onSubmit={handleSubmit}>
 
               <div className="inputpic" >
-                <label htmlFor="">Add<br />Picture</label>
-                <input type="file" name="avatar" onChange={handleFileChange} accept="image/*" className="circle-input" />
+                <label htmlFor="img">Add<br />Picture</label>
+                <input id="img" type="file" name="avatar" onChange={handleFileChange} accept="image/*" className="circle-input" />
               </div>
 
               {values.avatar && (
@@ -158,6 +160,7 @@ function SignUp() {
                 <div className="inputA">
                   <label htmlFor="" className="form-label">Gender</label>
                   <select name="gender" onChange={handleChange} >
+                    <option value=""></option>
                     <option value="man">Male</option>
                     <option value="woman">Female</option>
                   </select>
@@ -173,9 +176,9 @@ function SignUp() {
               <div className="inputA">
                 <label htmlFor="" className="form-label">Role</label>
                 <select name="role" onChange={handleChange}>
-                  <option value="admin">Admin</option>
                   <option value="patient">Patient</option>
                   <option value="medcin">Doctor</option>
+                  <option value="admin">Admin</option>
                 </select>
 
               </div>

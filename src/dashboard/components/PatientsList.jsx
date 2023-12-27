@@ -17,7 +17,7 @@ const PatientsList = () => {
     <div className='w-full h-screen  mx-6 mt-16 overflow-x-hidden overflow-y-auto flex flex-wrap  justify-center pb-10'>
       {
         patientsList && patientsList.map((e)=>
-          <Link to={'MyPatient'}> <InfoCard firstname={e.Nom} lastname={e.Prenom} role={e.role} id={e._id} avatar={e.avatar} /> </Link>
+          <Link to={'MyPatient/'+e._id}> <InfoCard firstname={e.Nom} lastname={e.Prenom} role={e.role} id={e._id} avatar={e.avatar} /> </Link>
         )
       }  
       

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import mannetteImage from './assets/mannette.png';
+import axios from "axios";
 import './Login.css'
 
 
@@ -20,6 +21,9 @@ function Login() {
     const {email,password} = values;
     const {data} = await axios.post('http://localhost:3000/api/login',{email,password});
     console.log(data);
+    const StringifiedUser = JSON.stringify({...data.user});
+    localStorage.setItem('user',JSON.stringify({...data.user}));
+    localStorage.setItem('session',JSON.stringify(data.session))
    
   }
   return (

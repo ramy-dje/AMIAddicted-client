@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import './chatPage.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 const ChatPage = () => {
   const [messages, setmessages] = useState([])
@@ -17,20 +17,20 @@ const ChatPage = () => {
   ])
   const [userData, setuserData] = useState({});
   const [fetchedMessages, setfetchedMessages] = useState(null);
- /* useEffect(()=>{
+  useEffect(()=>{
     const d = JSON.parse(localStorage.getItem('user'));
-    axios.get('http://localhost:3000/api/message').then((res)=>{console.log(res.data);setfetchedMessages(res.data)}) 
-    console.log(d.contacts);
-    setuserData(d);  
-  },[fetchedMessages])*/
+    // axios.get('http://localhost:3000/api/message').then((res)=>{console.log(res.data);setfetchedMessages(res.data)}) 
+    // console.log(d.contacts);
+    // setuserData(d);  
+  },[fetchedMessages])
   const [selectedFreind, setselectedFreind] = useState({});
   const [message, setmessage] = useState('')
   async function sendMessages(sender,reciver,msg) {
     console.log(sender,reciver)
     console.log(msg);
-    axios.post('http://localhost:3000/api/message',{sender:sender,reciver:reciver,msg:msg}).then((res)=>{
-      console.log(res.data)
-    });
+    // axios.post('http://localhost:3000/api/message',{sender:sender,reciver:reciver,msg:msg}).then((res)=>{
+    //   console.log(res.data)
+    // });
 
   }
 

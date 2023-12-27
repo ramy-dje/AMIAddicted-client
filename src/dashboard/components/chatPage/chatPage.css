@@ -8,19 +8,19 @@
     position: relative;
 }
 .chat .cardHeader{
-width: 66px;
-height: 125%;
+width: 85%;
+height: 66px;
 left: 122px;
-top: 100px;
+top: 10px;
 position: absolute;
-transform: rotate(-90deg);
+transform: none;
 transform-origin: 0 0;
 background: #171825;
 box-shadow: 9px 7px 10.100000381469727px 1px rgba(0, 0, 0, 0.25);
 border-radius: 52px;
 }
 .chat .chat-container{
-width: 75%;
+width: 85%;
 height: 580px;
 left: 126px;
 top: 120px;
@@ -32,7 +32,7 @@ border-radius: 13px;
 }
 .chat .contacts{
 width: 66px;
-height: 560px;
+height: 580px;
 left: 45px;
 top: 120px;
 position: absolute;
@@ -91,7 +91,7 @@ background-color: #1D203E;
 color: white;
 font-size: 15px;
 position: absolute;
-top:10%;
+top: 10%;
 left: 90%;
 }
 .chat .messages{
@@ -131,5 +131,101 @@ font-size: 25px;
 padding-inline: 10px;
 border-bottom: 1px solid rgb(194, 194, 194);
 }
+
+@media only screen and (max-width: 480px) {
+    .chat{
+        width: 100%;
+        position: relative;
+     }
+    .chat .chat-container{
+      width: 390px;
+      height: 580px;
+      left: 12px;
+      top: 100px;
+      position: relative;
+      background: #171825;
+      box-shadow: 10px 8px 11.300000190734863px rgba(0, 0, 0, 0.25);
+      border-radius: 13px;
+     }
+     .cardHeader{
+      display: none;
+     }
+     .chat .contacts{
+       width: 390px;
+       height: 66px;
+       left: 10px;
+       top: 10px;
+       position: absolute;
+       transform: none;
+       transform-origin: 0 0;
+       background: #171825;
+       box-shadow: 9px 7px 10.100000381469727px 1px rgba(0, 0, 0, 0.25);
+       border-radius: 52px;
+     }
+     .chat form{
+        height: 10%;
+        width: 90%;
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        justify-content: center;
+        position: relative;
+        left: 20px;
+        top: 85%;
+        } 
+        .chat form button{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #1D203E;
+            color: white;
+            font-size: 15px;
+            position: absolute;
+            top: 10%;
+            left: 80%;
+            }
+            .chat .messages{
+            margin-top: 15px;
+            height: 80%;
+            overflow-y: auto;
+            position: absolute;
+            border-radius: 25px;
+            width: 100%;
+            }
+    }
+
+ 
+@media only screen and (min-width: 482px) and (max-width: 880px){
+    .chat{
+        width: 100%;
+        position: relative;
+     }
+    .chat .chat-container{
+      width: 95%;
+      height: 580px;
+      left: 12px;
+      top: 130px;
+      position: relative;
+      background: #171825;
+      box-shadow: 10px 8px 11.300000190734863px rgba(0, 0, 0, 0.25);
+      border-radius: 13px;
+     }
+     .cardHeader{
+      display: none;
+     }
+     .chat .contacts{
+       width: 95%;
+       height: 66px;
+       left: 10px;
+       top: 10px;
+       position: absolute;
+       transform: none;
+       transform-origin: 0 0;
+       background: #171825;
+       box-shadow: 9px 7px 10.100000381469727px 1px rgba(0, 0, 0, 0.25);
+       border-radius: 52px;
+     }
+    }
 
  
