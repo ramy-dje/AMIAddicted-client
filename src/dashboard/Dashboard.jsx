@@ -14,7 +14,8 @@ import Edit from './components/Update/edit'
 import DoctorsList from './components/DoctorsList'
 import PatientsList from './components/PatientsList'
 import MessagingPage from './components/MessagingPage'
-import {Route,Routes} from 'react-router-dom'
+import {Link, Route,Routes} from 'react-router-dom'
+import { rightSideBarIcons } from './constants/Dashboard'
 
 const Dashboard = () => {
   return (
@@ -22,7 +23,7 @@ const Dashboard = () => {
         <div className='sm:w-1/5 bg-gradient-to-br from-[#202275] to-[#6C6DA9] h-[100vh] w-[50px]  '>
           <LeftSideBare />
         </div>
-        <div className='md:w-3/5  w-full bg-[#1D203E] h-[100vh] flex items-center justify-center'>
+        <div className='md:w-3/5  w-full bg-[#1D203E] h-[100vh] flex items-center justify-center relative'>
           <Routes>
             <Route path='doctorsList/MyDoctor/:id' Component={MyDoctor}/>
             <Route path='PatientsList/MyPatient/:id' Component={MyPatient}/>
@@ -37,7 +38,18 @@ const Dashboard = () => {
             <Route path='PatientsList' Component={PatientsList}/>
             <Route path='doctorsList' Component={DoctorsList}/>
           </Routes>
-          
+          <div className='w-full bg-transparent flex justify-center h-fit  md:hidden absolute bottom-0'>
+              <div className='w-10/12 h-12 mb-2 bg-gradient-to-l from-[#202275] to-[#6C6DA9] flex justify-between items-center px-3 rounded-full'>
+                {
+                  rightSideBarIcons.map((e,i)=>(
+                      <Link to={e.link}>
+                          <img src={e.icon} key={i} className='w-8'/>
+                      </Link>
+                    
+                  ))
+                }
+              </div>
+          </div>
         </div>
         <div className='w-1/5 bg-[#171825] h-[100vh] hidden md:block'>
           <RightSideBar />

@@ -1,11 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import {X,add} from '../assets/assets'
 import axios from 'axios'
+import {useParams} from 'react-router-dom'
 
 const UpdateQuestions = () => {
     const [surveyQuestions,setsurveyQuestions] = useState(null);
+    const {listName} = useParams();
+
     useEffect(()=>{
       axios.get('http://localhost:3000/api/getNewQst').then((res)=>setsurveyQuestions(res.data[0].list))
+      axios.get('http://localhost:3000/api/getOneNewQst/'+listName).then((res)=>console.log(res.data))
+
     },[])
     const [responses, setresponses] = useState([]);
     
