@@ -19,6 +19,8 @@ import add from './add.svg'
 import X from './X.svg'
 import roundedAccept from './roundedAccept.svg'
 import roundedX from './roundedX.svg'
+import admin from './admin.svg'
+import doctor from './doctor.svg'
 
 export {
     generalChat,
@@ -41,5 +43,7 @@ export {
     add,
     X,
     roundedX,
-    roundedAccept    
+    roundedAccept,
+    admin,
+    doctor    
 }

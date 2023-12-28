@@ -14,6 +14,7 @@ import Edit from './components/Update/edit'
 import DoctorsList from './components/DoctorsList'
 import PatientsList from './components/PatientsList'
 import MessagingPage from './components/MessagingPage'
+import Statistics from './components/Statistics'
 import {Link, Route,Routes} from 'react-router-dom'
 import { rightSideBarIcons } from './constants/Dashboard'
 
@@ -37,9 +38,10 @@ const Dashboard = () => {
             <Route path='Edit' Component={Edit}/>
             <Route path='PatientsList' Component={PatientsList}/>
             <Route path='doctorsList' Component={DoctorsList}/>
+            <Route path='MyStatistics' Component={Statistics}/>
           </Routes>
           <div className='w-full bg-transparent flex justify-center h-fit  md:hidden absolute bottom-0'>
-              <div className='w-10/12 h-12 mb-2 bg-gradient-to-l from-[#202275] to-[#6C6DA9] flex justify-between items-center px-3 rounded-full'>
+              <div className='w-10/12 h-12 mb-2 bg-gradient-to-l from-[#20217581] to-[#6c6da986] flex justify-between items-center px-3 rounded-full'>
                 {
                   rightSideBarIcons.map((e,i)=>(
                       <Link to={e.link}>

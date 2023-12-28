@@ -39,7 +39,7 @@ const leftSideBarIcons = [
     {
         title:'My statistics',
         icon : statistics,
-        link:''
+        link:'MyStatistics'
     },
     {
         title:'community',

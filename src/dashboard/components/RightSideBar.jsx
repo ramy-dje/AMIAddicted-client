@@ -52,7 +52,7 @@ const RightSideBar = () => {
             <div className='h-[88%] pr-1 overflow-auto'>
                 {
                 userData  && userData.contacts.map((e)=> <div className='flex gap-2 p-2 bg-[#2a2c44] rounded-md mb-2'>
-                    <img src={userData.avatar} alt='' className='w-10 h-10 bg-slate-500 rounded-full'/>
+                    <img src={e.avatar} alt='' className='w-10 h-10 bg-slate-500 rounded-full'/>
                     <div>
                         <p className=' text-white'>{e.Nom} {e.Prenom}</p>
                         <p className='text-gray-500 text-xs mt-[-5px]'>{e.role}</p>
