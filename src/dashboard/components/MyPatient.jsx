@@ -28,7 +28,9 @@ const MyPatient = () => {
     
       async function sendData(Doc,Patient) {
         const res = await axios.put('http://localhost:3000/api/addDoctorContact',{Doc,Patient});
+        const res2 = await axios.put('http://localhost:3000/api/addPatientContact',{Doc,Patient});
         console.log(res);
+        console.log(res2);
         console.log('c es bon')
        
       }
@@ -36,7 +38,7 @@ const MyPatient = () => {
       getUser();
       getDoctors();
       getSurvey();
-    },[])  
+    },[userData])  
     return (
     <div className='w-11/12 h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 sm:overflow-hidden overflow-auto'>
             <div className='flex flex-wrap py-6 items-center gap-4 '>
@@ -56,7 +58,7 @@ const MyPatient = () => {
                         </div>
                         <img src={settings} alt="" className='cursor-pointer'  onClick={()=>setisChangingDoctor(true)}/>
                     </div>    
-                    <div className='overflow-auto h-[90px] pr-1 pb-2 '>
+                    <div className='overflow-y-auto overflow-x-hidden h-[90px] pr-1 pb-2 '>
                         {
                             userData && userData.contacts.map((e,i)=>(
                                 <DoctorCard key={i} userData={userData} doctor={e} isDelete={true} />

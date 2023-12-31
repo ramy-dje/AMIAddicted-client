@@ -7,10 +7,10 @@
     font-family: 'adamina';
 }
 
-.main {
+.login {
     overflow: hidden;
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,14 +95,14 @@
     z-index: 99;
 }
 
-section .content {
+section.login .content {
     position: relative;
     padding-inline: 20px;
     width: 90%;
     HEIGHT: 100%;
 }
 
-section .content .form {
+section.login .content .form {
 
     position: relative;
     display: flex;
@@ -113,13 +113,13 @@ section .content .form {
 }
 
 
-section .content .form form{
+section.login .content .form form{
 
   width: 100%;
 }
 
 
-section .content h2 {
+section.login .content h2 {
 
     font-weight: 400;
     margin-top: 80px;
@@ -129,7 +129,7 @@ section .content h2 {
 }
 
 
-section .content .form .inputA .form-label {
+section.login .content .form .inputA .form-label {
     font-size: 20px;
     position: relative;
     top: 10px;
@@ -146,7 +146,7 @@ section .content .form .inputA .form-label {
     margin-bottom: 45px 
 }
 
-section .content .form .inputA input{
+section.login .content .form .inputA input{
     width: 100%;
     height: 45px;
     padding: 5px 15px;
@@ -164,12 +164,12 @@ section .content .form .inputA input{
 
 
 
-section .content .form .inputA input:hover {
+section.login .content .form .inputA input:hover {
     border: 2px solid grey;
 
 }
 
-section .content .form .inputA input:focus {
+section.login .content .form .inputA input:focus {
     border: 2px solid #146B9C;
 
 }
@@ -194,7 +194,7 @@ section .content .form .inputA input:focus {
     font-size: 18px;
 }
 
-section .content .form .button_sub input {
+section.login .content .form .button_sub input {
 
     height: 45px;
     width: 100%;
@@ -208,7 +208,7 @@ section .content .form .button_sub input {
 
 }
 
-section .content .form .button_sub input:hover {
+section.login .content .form .button_sub input:hover {
     background-color: #146B9C;
     border: 1.5px solid #146B9C;
 
@@ -254,7 +254,7 @@ section .content .form .button_sub input:hover {
         flex-shrink: 0;
     }
 
-    section .content {
+    section.login .content {
         position: absolute;
         display: flex;
         width: 100%;
@@ -264,20 +264,20 @@ section .content .form .button_sub input:hover {
     }
 
 
-    section .content h2 {
+    section.login .content h2 {
         margin-top: 75px;
         font-size: 40px;
         min-width: 300px;
         color: #FFF;
     }
 
-    section .content .form {
+    section.login .content .form {
         width: 90%;
         margin-top: 105px;
         justify-content: center;
     }
 
-    section .content .form form {
+    section.login .content .form form {
         width: 90%;
     }
 
@@ -290,7 +290,7 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .inputA input{
+    section.login .content .form .inputA input{
 
         height: 42px;
         padding-bottom: 0;
@@ -303,7 +303,7 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .inputA .form-label {
+    section.login .content .form .inputA .form-label {
         border-radius: 5px;
         height: 19px;
         padding-block: 2px;
@@ -316,12 +316,12 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .inputA input:hover{
+    section.login .content .form .inputA input:hover{
         border: 2px solid rgba(255, 255, 255, 0.5);
 
     }
 
-    section .content .form .inputA input:focus {
+    section.login .content .form .inputA input:focus {
         border: 2.5px solid #146B9C;
 
     }
@@ -336,7 +336,7 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .button_sub input {
+    section.login .content .form .button_sub input {
 
         height: 35px;
         color: #146B9C;
@@ -348,7 +348,7 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .button_sub input:hover {
+    section.login .content .form .button_sub input:hover {
         background-color: #146B9C;
         border: 1.5px solid #146B9C;
         color: white;
@@ -387,7 +387,7 @@ section .content .form .button_sub input:hover {
         display: none;
     }
 
-    section .content {
+    section.login .content {
         margin-left: 0;
     }
 }

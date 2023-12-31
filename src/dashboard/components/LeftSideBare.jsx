@@ -1,12 +1,13 @@
 import React,{useState} from 'react'
 import {generalChat,home,invitations,myDoctors,myPatients,questions,scoreOfPrediction,statistics,updatequestions} from '../assets/assets'
 import {leftSideBarIcons} from '../constants/Dashboard'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 
 const LeftSideBare = () => {
+  const navigate = useNavigate();
   const [ActiveElement, setActiveElement] = useState('Home')
   return (
-    <div className='flex h-screen flex-col px-1 sm:px-2 lg:px-4'>
+    <div className='flex h-screen flex-col px-1 sm:px-2 lg:px-4 relative'>
       <div className='flex justify-between border-b border-gray-700 text-white h-8 p-1'>
         <p className='text-sm sm:text-lg'>Explore</p>
       </div>
@@ -26,6 +27,9 @@ const LeftSideBare = () => {
         ))
        }
       </div>
+        <div  onClick={()=>{localStorage.clear();navigate('welcome')}}>
+          <p className='absolute bottom-2 text-lg text-white cursor-pointer'>logout</p>
+        </div>
     </div>
   )
 }

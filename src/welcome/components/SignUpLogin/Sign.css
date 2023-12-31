@@ -7,9 +7,9 @@
     font-family: 'adamina';
 }
 
-.main {
+.signup {
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,6 +65,7 @@
     height: 100%;
     border-radius: 25px 0px 0px 25px;
     background: white;
+    overflow-y: auto;
 }
 
 .text-pink-box {
@@ -94,14 +95,14 @@
     z-index: 99;
 }
 
-section .content {
+section.signup .content {
     position: relative;
     padding-inline: 30px;
     width: 90%;
     HEIGHT: 100%;
 }
 
-section .content .form {
+section.signup .content .form {
 
     position: relative;
     display: flex;
@@ -112,7 +113,7 @@ section .content .form {
 }
 
 
-section .content h2 {
+section.signup .content h2 {
 
     font-weight: 400;
     margin-top: 25px;
@@ -122,13 +123,13 @@ section .content h2 {
 }
 
 
-section .content .form .flex_inputs {
+section.signup .content .form .flex_inputs {
     display: flex;
     gap: 60px;
     width: 100%;
 }
 
-section .content .form .inputA .form-label {
+section.signup .content .form .inputA .form-label {
     font-size: 20px;
     position: relative;
     top: 10px;
@@ -144,8 +145,8 @@ section .content .form .inputA .form-label {
     MIN-WIDTH: 50px;
 }
 
-section .content .form .inputA input,
-section .content .form .inputA select {
+section.signup .content .form .inputA input,
+section.signup .content .form .inputA select {
     width: 100%;
     height: 45px;
     padding: 5px 15px;
@@ -161,7 +162,7 @@ section .content .form .inputA select {
 
 }
 
-section .content .form .inputpic {
+section.signup .content .form .inputpic {
     width: 100%;
     JUSTIFY-CONTENT: center;
     display: flex;
@@ -172,7 +173,7 @@ section .content .form .inputpic {
 }
 
 
-section .content .form .inputpic .circle-input {
+section.signup .content .form .inputpic .circle-input {
     border-radius: 50%;
     overflow: hidden;
     width: 105px;
@@ -185,12 +186,12 @@ section .content .form .inputpic .circle-input {
     font-size: 0.1px;
 }
 
-section .content .form .inputpic .circle-input:hover {
+section.signup .content .form .inputpic .circle-input:hover {
     border: 2px solid grey;
 
 }
 
-section .content .form .inputpic label {
+section.signup .content .form .inputpic label {
     position: absolute;
     FONT-SIZE: larger;
     font-weight: 100;
@@ -198,28 +199,28 @@ section .content .form .inputpic label {
     top: 18PX;
 }
 
-section .content .form .inputA input:hover,
-section .content .form .inputA select:hover {
+section.signup .content .form .inputA input:hover,
+section.signup .content .form .inputA select:hover {
     border: 2px solid grey;
 
 }
 
-section .content .form .inputA input:focus {
+section.signup .content .form .inputA input:focus {
     border: 2px solid #146B9C;
 
 }
 
-section .content .form .inputA select:focus {
+section.signup .content .form .inputA select:focus {
     border: 2px solid #146B9C;
 
 }
 
 
-section .content .form .flex_inputs .inputA input[type="date"] {
+section.signup .content .form .flex_inputs .inputA input[type="date"] {
     color: white;
 }
 
-section .content .form .flex_inputs .inputA input[type="date"]:valid {
+section.signup .content .form .flex_inputs .inputA input[type="date"]:valid {
     color: black;
 }
 
@@ -243,7 +244,7 @@ section .content .form .flex_inputs .inputA input[type="date"]:valid {
     font-size: 17px;
 }
 
-section .content .form .button_sub input {
+section.signup .content .form .button_sub input {
 
 
     height: 45px;
@@ -258,7 +259,7 @@ section .content .form .button_sub input {
 
 }
 
-section .content .form .button_sub input:hover {
+section.signup .content .form .button_sub input:hover {
     background-color: #146B9C;
     border: 1.5px solid #146B9C;
 
@@ -306,7 +307,7 @@ section .content .form .button_sub input:hover {
         flex-shrink: 0;
     }
 
-    section .content {
+    section.signup .content {
         position: absolute;
         display: flex;
         
@@ -317,32 +318,32 @@ section .content .form .button_sub input:hover {
     }
 
 
-    section .content h2 {
+    section.signup .content h2 {
         margin-top: 10px;
         font-size: 40px;
         min-width: 300px;
         color: #FFF;
     }
 
-    section .content .form {
+    section.signup .content .form {
         width: 90%;
         margin-top: 105px;
         justify-content: center;
     }
 
-    section .content .form form {
+    section.signup .content .form form {
         width: 90%;
     }
 
-    section .content .form .inputpic {
+    section.signup .content .form .inputpic {
         width: 90%;
     }
 
-    section .content .form .inputpic label {
+    section.signup .content .form .inputpic label {
         color: #FFF;
     }
 
-    section .content .form .inputpic .circle-input {
+    section.signup .content .form .inputpic .circle-input {
         border: 1.5px solid white;
     }
 
@@ -356,8 +357,8 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .inputA input,
-    section .content .form .inputA select {
+    section.signup .content .form .inputA input,
+    section.signup .content .form .inputA select {
 
         height: 40px;
         padding-bottom: 0;
@@ -370,15 +371,15 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .flex_inputs .inputA input[type="date"] {
+    section.signup .content .form .flex_inputs .inputA input[type="date"] {
         color: transparent;
     }
 
-    section .content .form .flex_inputs .inputA input[type="date"]:valid {
+    section.signup .content .form .flex_inputs .inputA input[type="date"]:valid {
         color: white;
     }
 
-    section .content .form .inputA .form-label {
+    section.signup .content .form .inputA .form-label {
         border-radius: 5px;
         height: 19px;
         padding-block: 2px;
@@ -391,19 +392,19 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .inputA input:hover,
-    section .content .form .inputA select:hover {
+    section.signup .content .form .inputA input:hover,
+    section.signup .content .form .inputA select:hover {
         border: 2px solid rgba(255, 255, 255, 0.5);
 
     }
 
-    section .content .form .inputA input:focus,
-    section .content .form .inputA select:focus {
+    section.signup .content .form .inputA input:focus,
+    section.signup .content .form .inputA select:focus {
         border: 2.5px solid #146B9C;
 
     }
 
-    section .content .form .flex_inputs {
+    section.signup .content .form .flex_inputs {
         display: block;
         width: 100%;
     }
@@ -418,7 +419,7 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .button_sub input {
+    section.signup .content .form .button_sub input {
 
         height: 33px;
         color: #146B9C;
@@ -430,7 +431,7 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .button_sub input:hover {
+    section.signup .content .form .button_sub input:hover {
         background-color: #146B9C;
         border: 1.5px solid #146B9C;
         color: white;
@@ -471,7 +472,7 @@ section .content .form .button_sub input:hover {
         display: none;
     }
 
-    section .content {
+    section.signup .content {
         margin-left: 0;
         padding-inline: 0;
         width: 85%;
@@ -485,32 +486,32 @@ section .content .form .button_sub input:hover {
     .main{
         overflow: hidden;
     }
-    section .content{
+    section.signup .content{
         padding-inline: 15px;
     }
 
-    section .content .form {
+    section.signup .content .form {
         margin-top: 90px;
         justify-content: center;
     }
 
 
-    section .content .form .inputA input,
-    section .content .form .inputA select {
+    section.signup .content .form .inputA input,
+    section.signup .content .form .inputA select {
         height: 40px;
         font-size: 15px;
     }
 
-    section .content .form .inputA .form-label {
+    section.signup .content .form .inputA .form-label {
         font-size: 18px;
     }
 
 
-    section .content .form form {
+    section.signup .content .form form {
         width: 100%;
     }
 
-    section .content h2 {
+    section.signup .content h2 {
 
         position: relative;
         top: 10px;
@@ -519,18 +520,18 @@ section .content .form .button_sub input:hover {
 
     }
 
-    section .content .form .inputpic {
+    section.signup .content .form .inputpic {
         top: -79px;
         height: 20%;
     }
 
-    section .content .form .inputpic .circle-input {
+    section.signup .content .form .inputpic .circle-input {
         max-height: 90px;
         width: 100px;
     }
 
 
-    section .content .form .flex_inputs {
+    section.signup .content .form .flex_inputs {
         flex-direction: column;
         gap: 0%;
 
@@ -540,11 +541,11 @@ section .content .form .button_sub input:hover {
         height: 60px;
     }
 
-    section .content .form .button_sub input {
+    section.signup .content .form .button_sub input {
         height: 38px;
     }
 
-    section .content .form .button_sub {
+    section.signup .content .form .button_sub {
         margin-top: 20px;
     }
 

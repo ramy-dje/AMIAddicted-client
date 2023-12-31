@@ -22,11 +22,13 @@ const MyDoctor = () => {
     useEffect(()=>{
         getUser();
         getPatients();
-    },[])
+    },[userData])
    
       async function sendData(Doc,Patient) {
         const res = await axios.put('http://localhost:3000/api/addPatientContact',{Doc,Patient});
+        const res2 = await axios.put('http://localhost:3000/api/addDoctorContact',{Doc,Patient});
         console.log(res);
+        console.log(res2);
         console.log('c es bon')
        
       }  

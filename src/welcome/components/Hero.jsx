@@ -1,8 +1,10 @@
 import styles from "../style";
 import { discount, robot,newRobot } from "../assets";
 import GetStarted from "./GetStarted";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
@@ -12,7 +14,7 @@ const Hero = () => {
             The Next <br className="sm:block hidden" />{" "}
             <span className="text-gradient">Generation</span>{" "}
           </h1>
-          <div className="ss:flex hidden md:mr-4 mr-0">
+          <div className="ss:flex hidden md:mr-4 mr-0" onClick={()=>navigate('/signup')}>
             <GetStarted />
           </div>
         </div>

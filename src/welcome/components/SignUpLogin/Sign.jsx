@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import mannetteImage from './assets/mannette.png';
 import './Sign.css'
 import axios from "axios";
-
+import X from './assets/blackX.svg'
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     firstname: "",
     lastname: "",
@@ -56,8 +58,8 @@ function SignUp() {
   }
 
   return (
-    <section className='main'>
-
+    <section className='signup relative'>
+      <img src={X} alt="" className="absolute top-2 right-4 z-10 cursor-pointer" onClick={()=>navigate('/welcome')} />
       <div className='blue-box'>
         <svg className="first-svg" xmlns="http://www.w3.org/2000/svg" width="644" height="613" viewBox="0 0 644 613" fill="none">
           <g filter="url(#filter0_f_6_44)">
@@ -203,7 +205,7 @@ function SignUp() {
           </div>
 
           <div className="User">
-          <p>Already have an account ?  <a href="#" >Login</a></p>
+          <p>Already have an account ?  <span className="cursor-pointer" onClick={()=>navigate('/login')}>Login</span></p>
           </div>
 
         </div>

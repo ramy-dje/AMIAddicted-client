@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import mannetteImage from './assets/mannette.png';
 import axios from "axios";
 import './Login.css'
+import X from './assets/blackX.svg'
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -21,14 +24,17 @@ function Login() {
     const {email,password} = values;
     const {data} = await axios.post('http://localhost:3000/api/login',{email,password});
     console.log(data);
+    if(data){
+      navigate('/')
+    }
     const StringifiedUser = JSON.stringify({...data.user});
     localStorage.setItem('user',JSON.stringify({...data.user}));
     localStorage.setItem('session',JSON.stringify(data.session))
    
   }
   return (
-    <section className='main'>
-
+    <section className='login relative'>
+      <img src={X} alt="" className="absolute top-2 right-0 z-10 cursor-pointer" onClick={()=>navigate('/welcome')}/>
       <div className='blue-box'>
         <svg className="first-svg" xmlns="http://www.w3.org/2000/svg" width="644" height="613" viewBox="0 0 644 613" fill="none">
           <g filter="url(#filter0_f_6_44)">
@@ -120,7 +126,7 @@ function Login() {
           </div>
 
           <div className="User">
-            <p>Don't have an account ? <a href="#"> Signup</a></p>
+            <p>Don't have an account ? <span className="cursor-pointer" onClick={()=>navigate('/signup')}> Signup</span></p>
           
           </div>
 

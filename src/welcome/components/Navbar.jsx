@@ -2,8 +2,10 @@ import { useState } from "react";
 import newLogo from '/logo.png'
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   console.log(active)
@@ -17,12 +19,13 @@ const Navbar = () => {
             key={nav.id}
             className={`font-poppins font-normal cursor-pointer text-[16px] ${
               active === nav.title ? "text-white" : "text-dimWhite"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
+            } ${index === navLinks.length - 1 ? "mr-10" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
             <a href={`#${nav.id}`}>{nav.title}</a>
           </li>
         ))}
+        <li   className={`font-poppins font-normal cursor-pointer text-[16px] text-dimWhite`} onClick={()=>navigate('/signup')}>Get account</li>
       </ul>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
