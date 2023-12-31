@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { deleteIcon ,addUser,groupusers} from '../assets/assets'
+import { deleteIcon ,addUser,groupusers,settings,scoreOfPrediction} from '../assets/assets'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
@@ -7,6 +7,13 @@ import { useParams } from 'react-router-dom'
 const MyPatient = () => {
     const {id} = useParams();
     const [userData, setUserData] = useState(null);
+    const [isChangingDoctor, setisChangingDoctor] = useState(true)
+    const [surveyList, setsurveyList] = useState([])
+
+    async function getSurvey(){
+      const {data} = await axios.get('http://localhost:3000/api/getNewQst')
+      setsurveyList(data[0].surveysList)
+    } 
     async function getUser(){
         const {data} = await axios.get('http://localhost:3000/api/getUser/'+id);
         setUserData(data)
@@ -28,6 +35,7 @@ const MyPatient = () => {
     useEffect(()=>{
       getUser();
       getDoctors();
+      getSurvey();
     },[])  
     return (
     <div className='w-11/12 h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 sm:overflow-hidden overflow-auto'>
@@ -41,11 +49,14 @@ const MyPatient = () => {
             </div>
             <div className='flex  flex-wrap justify-between py-4 items-start'>
                 <div>
-                    <div className='flex gap-5 items-center text-white mb-2'>
-                        <img src={groupusers} alt="" className='w-10' />
-                        <h2 className='text-2xl'>My doctors</h2>
-                    </div>
-                    <div className='overflow-auto h-[210px] pr-1'>
+                    <div className='flex justify-between items-center'>
+                        <div className='flex gap-5 items-center text-white mb-2'>
+                            <img src={groupusers} alt="" className='w-10' />
+                            <h2 className='text-2xl'>My doctors</h2>
+                        </div>
+                        <img src={settings} alt="" className='cursor-pointer'  onClick={()=>setisChangingDoctor(true)}/>
+                    </div>    
+                    <div className='overflow-auto h-[90px] pr-1 pb-2 '>
                         {
                             userData && userData.contacts.map((e,i)=>(
                                 <DoctorCard key={i} userData={userData} doctor={e} isDelete={true} />
@@ -53,9 +64,18 @@ const MyPatient = () => {
                         }
                     
                     </div>
+                    <div>
+                        <div className='flex justify-between items-end'>
+                            <h2 className='text-white text-2xl'>My survey</h2>
+                            <img src={settings} alt="" className='cursor-pointer' onClick={()=>setisChangingDoctor(false)}/>
+                        </div>
+                        <div className='w-[250px] text-white p-2 h-[50px] mt-2 bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
+                            survey name
+                        </div>
+                    </div>
                 </div>
 
-                <div className=' '>
+               {isChangingDoctor ? <div className=' '>
                     <div className='flex  items-center text-white mb-2'>
                         <input 
                         type="text"  
@@ -73,7 +93,25 @@ const MyPatient = () => {
                     
                     </div>
 
-                </div>
+                    </div> 
+                    : 
+                    <div className='overflow-y-auto h-[300px] '>
+                        <div className='flex  items-center text-white mb-2'>
+                            <input 
+                            type="text"  
+                            className='w-[220px] h-[50px]  text-xl bg-transparent rounded-lg outline-none' 
+                            placeholder='type the survey name' />
+                            <img src={scoreOfPrediction} alt="" className='w-10'/>
+                        </div>
+                    {
+                          surveyList && surveyList.map((e)=>(
+                            <div className='w-[250px] text-white p-2 h-[50px] mt-2 bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
+                                {e.listName}
+                            </div>)
+                          )
+                    }
+                    </div>
+                }
                 
             </div>
     </div>

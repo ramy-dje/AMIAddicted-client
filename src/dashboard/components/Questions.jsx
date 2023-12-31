@@ -19,7 +19,9 @@ const Questions = () => {
    
     
     useEffect(()=>{
-        axios.get('http://localhost:3000/api/getNewQst').then((res)=>{setsurvey(res.data[0].list);console.log(res.data[0].list)})
+        axios.get('http://localhost:3000/api/getNewQst').then((res)=>{setsurvey(res.data[0].surveysList[2].list);console.log(res.data[0].
+        surveysList[2].list
+        )})
         
     },[]);
     useEffect(()=>{

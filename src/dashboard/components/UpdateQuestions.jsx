@@ -8,8 +8,7 @@ const UpdateQuestions = () => {
     const {listName} = useParams();
 
     useEffect(()=>{
-      axios.get('http://localhost:3000/api/getNewQst').then((res)=>setsurveyQuestions(res.data[0].list))
-      axios.get('http://localhost:3000/api/getOneNewQst/'+listName).then((res)=>console.log(res.data))
+      axios.get('http://localhost:3000/api/getOneNewQst/'+listName).then((res)=>{console.log(res.data.list);setsurveyQuestions(res.data.list)})
 
     },[])
     const [responses, setresponses] = useState([]);
