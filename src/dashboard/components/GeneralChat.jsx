@@ -19,13 +19,17 @@ const GeneralChat = () => {
         setcurrentMsg('')
         console.log('message send')
     }
-
+    async function deleteMessage(msgId){
+       
+        const {data} = await axios.delete(`http://localhost:3000/api/generalChat/one/${msgId}`)
+        console.log(data)
+    }
     
     useEffect(()=>{
         getMessages();
         const parsedData = JSON.parse(localStorage.getItem('user'))
         setuserData(parsedData)
-    },[])
+    },[generalChat])
     const messages =[
         {
             user :'amine',
@@ -116,7 +120,7 @@ const GeneralChat = () => {
                 <p 
                 className={`p-2 sm:max-w-[300px] max-w-[150px] text-sm sm:text-lg ${e.id_Exéditeur == userData._id ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
                 > {e.contennues}</p>
-                <img src={threeDots} className='hidden group-hover:block w-4  cursor-pointer' />
+                {(userData.role =='admin' || e.id_Exéditeur == userData._id ) && <img src={threeDots} className='hidden group-hover:block w-4  cursor-pointer' onClick={()=>deleteMessage(e._id)}/>}
             </div>))}
         </div>
         <div className='h-[55px] w-full mr-8 ml-2  rounded-tr-lg rounded-full relative'>

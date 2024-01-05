@@ -35,9 +35,14 @@ function SignUp() {
       res = await axios.post('http://localhost:3000/api/register/patient', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
 
     }*/
-    res = await axios.post('http://localhost:3000/api/newRegister', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
+    const {data} = await axios.post('http://localhost:3000/api/newRegister', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
 
-    console.log(res.data)
+    console.log(data)
+    if(data){
+      navigate('/')
+    }
+    const StringifiedUser = JSON.stringify({...data.user});
+    localStorage.setItem('user',JSON.stringify({...data.user}));
   
   }
 

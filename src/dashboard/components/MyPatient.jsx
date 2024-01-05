@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import { deleteIcon ,addUser,groupusers,settings,scoreOfPrediction} from '../assets/assets'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams ,useNavigate} from 'react-router-dom'
+
 
 
 const MyPatient = () => {
@@ -9,6 +10,24 @@ const MyPatient = () => {
     const [userData, setUserData] = useState(null);
     const [isChangingDoctor, setisChangingDoctor] = useState(true)
     const [surveyList, setsurveyList] = useState([])
+    const [userSurvey, setuserSurvey] = useState(null)
+    const navigate = useNavigate()
+
+    async function AddSurveyToPatient(userId,survey){
+
+        const {data} = await axios.post('http://localhost:3000/api/create/SurveyToUser',{userId,survey});
+        console.log(data)
+    }
+    async function getUserSurvey(userId){
+        const {data} = await axios.get('http://localhost:3000/api/get/SurveyToUser/'+userId)
+        setuserSurvey(data)
+        console.log(data)
+    }
+    async function deleteUserSurvey(id){
+        const {data} = await axios.delete('http://localhost:3000/api/delete/SurveyToUser/'+id)
+        console.log(data)
+    }
+
 
     async function getSurvey(){
       const {data} = await axios.get('http://localhost:3000/api/getNewQst')
@@ -17,13 +36,13 @@ const MyPatient = () => {
     async function getUser(){
         const {data} = await axios.get('http://localhost:3000/api/getUser/'+id);
         setUserData(data)
-        console.log(data)
+        //console.log(data)
     }
     const [doctorsList, setDoctorsList] = useState([]);
     async function getDoctors() {
         const {data} = await axios.get('http://localhost:3000/api/getDoctors');
         setDoctorsList(data);
-        console.log(data)
+       // console.log(data)
     }
     
       async function sendData(Doc,Patient) {
@@ -38,6 +57,7 @@ const MyPatient = () => {
       getUser();
       getDoctors();
       getSurvey();
+      userData && getUserSurvey(userData._id)
     },[userData])  
     return (
     <div className='w-11/12 h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 sm:overflow-hidden overflow-auto'>
@@ -71,9 +91,13 @@ const MyPatient = () => {
                             <h2 className='text-white text-2xl'>My survey</h2>
                             <img src={settings} alt="" className='cursor-pointer' onClick={()=>setisChangingDoctor(false)}/>
                         </div>
-                        <div className='w-[250px] text-white p-2 h-[50px] mt-2 bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
-                            survey name
-                        </div>
+                        {userSurvey && userSurvey.map((e)=><div  className=' w-[250px] text-white p-2 h-[50px] mt-2 bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
+                            {e.survey.listName}
+                            <div className='flex items-center gap-1'>
+                                <img src={scoreOfPrediction} onClick={()=>navigate('/SurveyResult/'+userData._id)} alt="" className='cursor-pointer w-4' /> 
+                                <img src={deleteIcon} onClick={()=>deleteUserSurvey(e._id)} alt="" className='cursor-pointer' /> 
+                            </div>
+                        </div>)}
                     </div>
                 </div>
 
@@ -107,7 +131,9 @@ const MyPatient = () => {
                         </div>
                     {
                           surveyList && surveyList.map((e)=>(
-                            <div className='w-[250px] text-white p-2 h-[50px] mt-2 bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
+                            <div 
+                            onClick={()=>AddSurveyToPatient(userData._id,e)}
+                            className='w-[250px] cursor-pointer text-white p-2 h-[50px] mt-2 bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
                                 {e.listName}
                             </div>)
                           )

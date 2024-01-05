@@ -8,14 +8,18 @@ const UpdateSurveys = () => {
   async function getSurvey(){
     const {data} = await axios.get('http://localhost:3000/api/getNewQst')
     setsurveyList(data[0].surveysList)
+  }
+  async function addSurvey() {
+    const {data} = await axios.post('http://localhost:3000/api/createNewQst',{listName:'new survey',list:[]})
+    console.log(data)
   } 
   useEffect(()=>{
     getSurvey();
-  },[])
+  },[surveyList])
   return (
     <div className='h-screen sm:w-4/5 w-full p-5'>
         <div className='flex justify-end pt-8 pb-10'>
-            <img src={add} alt="" className='w-8 custom-shadow rounded-full cursor-pointer'/>
+            <img src={add} alt="" className='w-8 custom-shadow rounded-full cursor-pointer' onClick={addSurvey}/>
         </div>
         {
           surveyList && surveyList.map((e)=><div className='flex items-center justify-between px-5 h-[75px] bg-[#171825] rounded-lg custom-shadow text-white mb-8'>

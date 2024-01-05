@@ -6,6 +6,11 @@ import {useParams} from 'react-router-dom'
 const UpdateQuestions = () => {
     const [surveyQuestions,setsurveyQuestions] = useState(null);
     const {listName} = useParams();
+    const [name, setname] = useState(listName);
+
+    function handleChangeName(newName){
+      setname(newName)
+    }
 
     useEffect(()=>{
       axios.get('http://localhost:3000/api/getOneNewQst/'+listName).then((res)=>{console.log(res.data.list);setsurveyQuestions(res.data.list)})
@@ -36,6 +41,8 @@ const UpdateQuestions = () => {
   }    
  async function handleUpdateSurvey(){
   const updatedSurvey = {
+    listName,
+    newListName:name,
     list : [...surveyQuestions]
   }
     const data = await axios.post('http://localhost:3000/api/updateNewQst',updatedSurvey);
@@ -45,6 +52,7 @@ const UpdateQuestions = () => {
 
   return (
     <div className='w-full h-screen sm:p-4 pt-2 flex flex-col items-center overflow-y-auto'>
+        <input className='my-5 text-2xl text-white outline-none border-none bg-transparent' onChange={(e)=>handleChangeName(e.target.value)} value={name}/>
         {
             surveyQuestions && surveyQuestions.map((e,ii)=>(
                 <QuestionCard key={ii} question={e.question} answers={e.answers} questionNumber={ii} surveyQuestions={surveyQuestions} setsurveyQuestions={setsurveyQuestions}/>

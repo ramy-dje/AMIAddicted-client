@@ -1,50 +1,61 @@
 import {chat, generalChat,home,invitations,myDoctors,myPatients,notifications,questions,scoreOfPrediction,statistics,updatequestions,settings} from '../assets/assets'
 
+const data = JSON.parse(localStorage.getItem('user'));
+console.log(data)
 const leftSideBarIcons = [
     {
         title:'Home',
         icon : home,
-        link:''
+        link:'',
+        allowed : ['patient','medcin','admin']
     },
     {
         title:'questions',
         icon : questions,
-        link:'Questions'
+        link:'Questions',
+        allowed : ['patient']
     },
     {
         title:'Scores of prediction',
         icon :scoreOfPrediction,
-        link:''
+        link:`SurveyResult${data && `/${data._id}`}`  ,
+        allowed : ['patient','medcin']
     },
     {
         title:'invitations',
         icon :invitations,
-        link:'Invitations'
+        link:'Invitations',
+        allowed : ['admin']
     },
     {
         title:'My doctors',
         icon :myDoctors,
-        link:'doctorsList'
+        link:'doctorsList',
+        allowed : ['admin']
     },
     {
         title:'My patients',
         icon :myPatients,
-        link:'PatientsList'
+        link:'PatientsList',
+        allowed : ['medcin','admin']
     },
     {
         title:'Update questions',
         icon :updatequestions,
-        link:'UpdateSurveys'
+        link:'UpdateSurveys',
+        allowed : ['medcin']
     },
     {
         title:'My statistics',
         icon : statistics,
-        link:'MyStatistics'
+        link:'MyStatistics',
+        allowed : ['admin']
     },
     {
         title:'community',
         icon : generalChat,
-        link:'GeneralChat'
+        link:'GeneralChat',
+        allowed : ['patient','medcin','admin']
     },
 
 ];

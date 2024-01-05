@@ -5,9 +5,10 @@ import axios from 'axios';
 const Questions = () => {
     const [arr,setArr] = useState([]);
     const [survey, setsurvey] = useState(null);
-    const [surveyList, setsurveyList] = useState(null);
+    const [surveyName, setsurveyName] = useState(null);
     const [current, setcurrent] = useState(1);
     const [responses, setresponses] = useState([]);
+   const [userData, setuserData] = useState();  
 
     function calculateNbrOfPages(quesionsList){
         if(arr.length  <= 0){
@@ -16,13 +17,44 @@ const Questions = () => {
             }
         }    
     }
-   
+
+
+    async function sendResponse(){
+        console.log(responses)
+        let res = 0
+        responses.forEach((e)=>{res +=Number(e.value) })
+        const {data} = await axios.post('http://localhost:3000/api/create/newQstRes',{
+            surveyName,
+            patient:userData._id,
+            patientAnswers:responses,
+            result:res ,
+            comment:''
+        })
+       
+        console.log(res)
+    }
+
+    async function getUserData(){
+        const parsedData = JSON.parse(localStorage.getItem('user'))
+        getUserSurvey(parsedData._id)
+        setuserData(parsedData)
+        console.log(parsedData)
+    }
+
+    async function getUserSurvey(userId){
+        const {data} = await axios.get('http://localhost:3000/api/get/SurveyToUser/'+userId)
+        //setuserSurvey(data)
+        console.log(data[0].survey)
+        setsurvey(data[0].survey.list)
+        setsurveyName(data[0].survey.listName)
+    }
     
     useEffect(()=>{
-        axios.get('http://localhost:3000/api/getNewQst').then((res)=>{setsurvey(res.data[0].surveysList[2].list);console.log(res.data[0].
+       /* axios.get('http://localhost:3000/api/getNewQst').then((res)=>{setsurvey(res.data[0].surveysList[2].list);console.log(res.data[0].
         surveysList[2].list
-        )})
-        
+        )})*/
+        getUserData()
+      
     },[]);
     useEffect(()=>{
         survey && calculateNbrOfPages(survey);
@@ -53,7 +85,9 @@ const Questions = () => {
          
         </div>
       {arr && current == arr.length && <div className='flex justify-end w-full items-end'>
-          <button  className='border-none bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] text-lg rounded-lg text-white px-6 py-2'>Update changes</button>
+          <button  
+          onClick={sendResponse}
+          className='border-none bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] text-lg rounded-lg text-white px-6 py-2'>Send answers</button>
         </div>}
     </div>
   )
@@ -62,16 +96,17 @@ const Questions = () => {
 
 function QuestionCard({question,answers,setresponses,responses,setcurrent,arr,current}) {
 
-    function handleChange(value,question) {  
+    function handleChange(value,question,answer) {  
         const tempData = responses;
         let found =false ;
         tempData && tempData.map((e,i)=>{
             if(e.question == question){
                 found = true
                 e.value = value
+                e.answer = answer
             } 
         })
-        setresponses((prev)=>(found ? setresponses(tempData):[...prev,{question:question,value:value}]))
+        setresponses((prev)=>(found ? setresponses(tempData):[...prev,{question:question,value:value,answer:answer}]))
         current != arr.length && setcurrent(Math.floor((responses.length+1)/4 +1) )
         console.log(arr.length)
         console.log(responses)
@@ -84,7 +119,7 @@ function QuestionCard({question,answers,setresponses,responses,setcurrent,arr,cu
           answers && answers.map((e,i)=>{
             return (
             <div className='flex gap-1 items-center' key={i}>
-                <input id={i+question} type="radio" onChange={(s)=>{handleChange(s.target.value,question);}}  name={question} value={e.value} />
+                <input id={i+question} type="radio" onChange={(s)=>{handleChange(s.target.value,question,e.answer);}}  name={question} value={e.value} />
                 <label htmlFor={i+question}>{e.answer}</label>
             </div>
             )

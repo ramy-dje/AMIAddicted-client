@@ -15,6 +15,7 @@ import DoctorsList from './components/DoctorsList'
 import PatientsList from './components/PatientsList'
 import MessagingPage from './components/MessagingPage'
 import Statistics from './components/Statistics'
+import SurveyResult from './components/SurveyResult'
 import {Link, Route,Routes} from 'react-router-dom'
 import { rightSideBarIcons } from './constants/Dashboard'
 
@@ -29,6 +30,7 @@ const Dashboard = () => {
             <Route path='doctorsList/MyDoctor/:id' Component={MyDoctor}/>
             <Route path='PatientsList/MyPatient/:id' Component={MyPatient}/>
             <Route path='GeneralChat' Component={GeneralChat}/>
+            <Route path='SurveyResult/:id' Component={SurveyResult}/>
             <Route path='Questions' Component={Questions}/>
             <Route path='UpdateSurveys/UpdateQuestions/:listName' Component={UpdateQuestions}/>
             <Route path='UpdateSurveys' Component={UpdateSurveys}/>

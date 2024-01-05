@@ -1,11 +1,21 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {generalChat,home,invitations,myDoctors,myPatients,questions,scoreOfPrediction,statistics,updatequestions} from '../assets/assets'
 import {leftSideBarIcons} from '../constants/Dashboard'
 import {Link,useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 const LeftSideBare = () => {
   const navigate = useNavigate();
   const [ActiveElement, setActiveElement] = useState('Home')
+  const [answers, setanswers] = useState(null)
+  async function getUser(){
+      const {data} = await axios.get('http://localhost:3000/api/getUser/'+id)
+        setUserData(data)
+        //console.log(data)
+  }
+  useEffect(()=>{
+    getUser()
+  },[])
   return (
     <div className='flex h-screen flex-col px-1 sm:px-2 lg:px-4 relative'>
       <div className='flex justify-between border-b border-gray-700 text-white h-8 p-1'>

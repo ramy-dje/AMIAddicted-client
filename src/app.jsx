@@ -9,18 +9,16 @@ const app = () => {
     const navigate = useNavigate();
     const [userData, setuserData] = useState(null)
     async function getUserData(){
-        const data = await JSON.parse(localStorage.getItem('user'));
+        const data = JSON.parse(localStorage.getItem('user'));
+        data ? navigate('/*') : navigate('/welcome');
         setuserData(data)
         console.log(data)
     }
     useLayoutEffect(()=>{
         getUserData()
-        if(userData){
-            navigate('/')
-        }else{
-            navigate('/welcome')
-        }
-    },[userData])
+        
+
+    },[])
     return (
         <div>
             <Routes>

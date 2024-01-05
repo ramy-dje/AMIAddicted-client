@@ -26,16 +26,21 @@ const MessagingPage = () => {
       axios.get('http://localhost:3000/api/message').then((res)=>{console.log(res.data);setfetchedMessages(res.data)}) 
       console.log(d.contacts);
       setuserData(d);  
-    },[])
+    },[fetchedMessages])
     const [selectedFreind, setselectedFreind] = useState(null);
     const [message, setmessage] = useState('')
+
     async function sendMessages(sender,reciver,msg) {
       console.log(sender,reciver)
       console.log(msg);
       axios.post('http://localhost:3000/api/message',{sender:sender,reciver:reciver,msg:msg}).then((res)=>{
         console.log(res.data)
       });
-  
+    }
+    async function deleteMessage(msgId,userID){
+        console.log('clicked')
+        const {data} = await axios.delete(`http://localhost:3000/api/mymessage/${userID}/${msgId}`)
+        console.log(data)
     }
     function handleMessageChange(value){
         setmessage(value)
@@ -160,7 +165,7 @@ const MessagingPage = () => {
                         <p 
                         className={`p-2 sm:max-w-[300px] max-w-[150px] text-sm sm:text-lg ${e.id_Exéditeur == userData._id ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
                         > {e.contennues}</p>
-                        <img src={threeDots} className='hidden group-hover:block w-4  cursor-pointer' />
+                        {e.id_Exéditeur == userData._id && <img src={threeDots} className={`hidden group-hover:block w-4  cursor-pointer`}  onClick={()=>deleteMessage(e._id,userData._id)} />}
                     </div>))}
                 </div>
                 <div className='h-[55px] w-full mr-8 ml-2  rounded-tr-lg rounded-full relative'>
