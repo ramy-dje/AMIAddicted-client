@@ -8,13 +8,14 @@ const LeftSideBare = () => {
   const navigate = useNavigate();
   const [ActiveElement, setActiveElement] = useState('Home')
   const [answers, setanswers] = useState(null)
-  async function getUser(){
-      const {data} = await axios.get('http://localhost:3000/api/getUser/'+id)
-        setUserData(data)
-        //console.log(data)
-  }
+  const [userData, setuserData] = useState(null)
+  async function getUserData(){
+    const parsedData =await JSON.parse(localStorage.getItem('user'))
+    setuserData(parsedData)
+    console.log(parsedData)
+}
   useEffect(()=>{
-    getUser()
+    getUserData()
   },[])
   return (
     <div className='flex h-screen flex-col px-1 sm:px-2 lg:px-4 relative'>
@@ -23,8 +24,8 @@ const LeftSideBare = () => {
       </div>
       <div className='flex flex-col gap-2 pt-3'>
        {
-        leftSideBarIcons.map((e,i)=>(
-          <Link to={e.link}>
+        userData && leftSideBarIcons.map((e,i)=>(
+          e.allowed.includes(userData.role) && <Link to={e.link}>
             <div
               key={i} 
               className={`flex items-center gap-2 text-white px-2 sm:px-4 py-2 rounded-lg mb-1 cursor-pointer ${e.title == ActiveElement && 'bg-[#1D203E]'}`}

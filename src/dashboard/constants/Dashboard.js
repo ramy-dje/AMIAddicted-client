@@ -6,7 +6,7 @@ const leftSideBarIcons = [
     {
         title:'Home',
         icon : home,
-        link:'',
+        link:'home',
         allowed : ['patient','medcin','admin']
     },
     {
@@ -19,7 +19,7 @@ const leftSideBarIcons = [
         title:'Scores of prediction',
         icon :scoreOfPrediction,
         link:`SurveyResult${data && `/${data._id}`}`  ,
-        allowed : ['patient','medcin']
+        allowed : ['patient']
     },
     {
         title:'invitations',

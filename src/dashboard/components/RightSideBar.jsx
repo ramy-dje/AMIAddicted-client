@@ -24,7 +24,7 @@ const RightSideBar = () => {
     },[]);
     
   return (
-    <div className='flex h-screen flex-col px-4'>
+    <div className='flex h-screen flex-col px-4 justify-center'>
         <div className='flex justify-between border-b border-gray-700 text-white h-8 p-1'>
             {
                 rightSideBarIcons.map((e,i)=>(
@@ -43,7 +43,7 @@ const RightSideBar = () => {
             </div>}
             
         </div>
-        <div className='w-full h-[550px] overflow-hidden '>
+        <div className='w-full h-[350px] overflow-hidden '>
             <div className='flex justify-between text-gray-500 mb-2'>
                 <p>My Contacts</p>
                 <Link to={'/ChatPage'}><p className='cursor-pointer'>see all</p></Link>
@@ -62,7 +62,7 @@ const RightSideBar = () => {
                 
             </div>
         </div>
-        <div className='w-full h-3/12 overflow-hidden'>
+        <div className='w-full h-[350px] overflow-hidden'>
             <div className='flex justify-between text-gray-500 mb-2'>
                 <p>Notifications</p>
                 <Link to={'/Notifications'}><p className='cursor-pointer'>see all</p></Link>

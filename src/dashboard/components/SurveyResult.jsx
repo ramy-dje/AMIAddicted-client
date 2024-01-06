@@ -16,6 +16,7 @@ const SurveyResult = () => {
         const {data} = await axios.get('http://localhost:3000/api/newQstRes/'+id)
         setanswers(data)
         console.log(data)
+        console.log(answers)
         //console.log(data)
     }
     useEffect(()=>{
@@ -31,7 +32,7 @@ const SurveyResult = () => {
     }
   return (
     <div className='w-11/12 h-[90vh] bg-[#171825] rounded-[30px] custom-shadow px-6 sm:overflow-hidden overflow-auto'>
-    <div className='flex flex-wrap py-6 items-center gap-4 '>
+    {(answers && answers.length > 0 ) ? <><div className='flex flex-wrap py-6 items-center gap-4 '>
         <img src={userData && userData.avatar} className='w-[170px] h-[170px] bg-gray-500 rounded-xl'/>
         <div>
             <h1 className='text-white text-4xl'>{userData && userData.Nom} {userData && userData.Prenom}</h1>
@@ -42,7 +43,7 @@ const SurveyResult = () => {
     <div className='flex  flex-wrap justify-between py-4 items-start'>
         <div className='flex flex-col items-center'>
             <div className='w-[140px] h-[140px]  rounded-full border-4 border-white flex justify-center items-center white-shadow  mb-2'>
-                <p className='text-5xl text-white'>{answers && answers[0].result}</p>
+                <p className='text-5xl text-white'>{answers && answers[0].result && answers[0].result}</p>
             </div>
             <div className=' text-white mb-2 '>
                 <div className='flex justify-between items-center'>
@@ -79,7 +80,9 @@ const SurveyResult = () => {
 
         </div>
         
-    </div>
+    </div></> : <div className='w-full h-full text-white flex items-center justify-center'>
+        <p className='text-4xl text-center'>you didn't answer the survey yet </p>
+        </div>}
 </div>
   )
 }

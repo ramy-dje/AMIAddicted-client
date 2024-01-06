@@ -110,7 +110,7 @@ const MyPatient = () => {
                     </div>
                 </div>
 
-               {isChangingDoctor ? <div className=' '>
+               {userData && userData.role == 'admin' &&( isChangingDoctor ? <div className=' '>
                     <div className='flex  items-center text-white mb-2'>
                         <input 
                         type="text"  
@@ -147,7 +147,7 @@ const MyPatient = () => {
                             </div>)
                           )
                     }
-                    </div>
+                    </div>)
                 }
                 
             </div>
@@ -171,7 +171,7 @@ const MyPatient = () => {
                     <p className='text-sm mt-[-4px] text-[#989898]'>{doctor.email}</p>
                 </div>
             </div>
-            {isDelete && <img src={deleteIcon} onClick={()=>deletePatients(doctor,userData)} alt="" className='cursor-pointer'/>}
+            {false && <img src={deleteIcon} onClick={()=>deletePatients(doctor,userData)} alt="" className='cursor-pointer'/>}
         </div>
     )
 }

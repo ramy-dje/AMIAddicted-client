@@ -62,7 +62,8 @@ const Questions = () => {
  
 
   return (
-    <div className='flex flex-col gap-2 px-6 pt-6 pb-2 h-screen items-center overflow-y-auto '>
+    <>
+    {survey ? <div className='flex flex-col gap-2 px-6 pt-6 pb-2 h-screen items-center overflow-y-auto '>
         <div className='flex'>
             {
                 arr && arr.map((e,i)=>(
@@ -89,7 +90,12 @@ const Questions = () => {
           onClick={sendResponse}
           className='border-none bg-gradient-to-br from-[#6D54BF] to-[#1E2F7D] text-lg rounded-lg text-white px-6 py-2'>Send answers</button>
         </div>}
-    </div>
+    </div> : <div className='w-11/12 h-[90vh] bg-[#171825] rounded-[30px] custom-shadow px-6 sm:overflow-hidden overflow-auto'>
+        <div className='w-full h-full text-white flex items-center justify-center'>
+        <p className='text-4xl text-center'>you don't have any survey now </p>
+        </div>
+    </div>}
+    </>
   )
 }
 
