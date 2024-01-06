@@ -44,9 +44,12 @@ const Questions = () => {
     async function getUserSurvey(userId){
         const {data} = await axios.get('http://localhost:3000/api/get/SurveyToUser/'+userId)
         //setuserSurvey(data)
-        console.log(data[0].survey)
-        setsurvey(data[0].survey.list)
-        setsurveyName(data[0].survey.listName)
+        console.log(data && data.length > 0)
+        if(data && data.length > 0){
+            setsurvey(data[0].survey.list)
+            setsurveyName(data[0].survey.listName)
+        }
+       
     }
     
     useEffect(()=>{
