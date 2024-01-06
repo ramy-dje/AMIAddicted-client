@@ -7,6 +7,12 @@ import { useParams } from 'react-router-dom'
 const MyDoctor = () => {
     const {id} = useParams();
     const [userData, setUserData] = useState(null);
+    
+    async function createNotification(idUser,notification){
+        const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+        console.log(data)
+    }
+
     async function getUser(){
         const {data} = await axios.get('http://localhost:3000/api/getUser/'+id);
         setUserData(data)
@@ -27,6 +33,8 @@ const MyDoctor = () => {
       async function sendData(Doc,Patient) {
         const res = await axios.put('http://localhost:3000/api/addPatientContact',{Doc,Patient});
         const res2 = await axios.put('http://localhost:3000/api/addDoctorContact',{Doc,Patient});
+        createNotification(Doc._id,'a new patient is added for you ')
+        createNotification(Patient._id,'a new doctor is added for you ')
         console.log(res);
         console.log(res2);
         console.log('c es bon')
@@ -81,8 +89,17 @@ const MyDoctor = () => {
 }
 
 function PatientCard({patient,isDelete,userData}) {
+    async function createNotification(idUser,notification){
+        
+        const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+        console.log({idUser,notification})
+        console.log(data)
+    }
     async function deletePatients(Doc,Patient){
         const res = await axios.put('http://localhost:3000/api/deletePatientContact',{Doc,Patient});
+        const res2 = await axios.put('http://localhost:3000/api/deleteDoctorContact',{Doc,Patient});
+        createNotification(Doc._id,'a  patient is deleted for you ')
+        createNotification(Patient._id,'a doctor is deleted for you ')
         console.log(res);
         console.log('c es bon')
       }

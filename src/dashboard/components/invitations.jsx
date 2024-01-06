@@ -26,9 +26,16 @@ const Invitations = () => {
 
 function Invitation({firstname,lastname,gender,birthday,email,role,id,avatar}) {
     const [extended, setextended] = useState(false);
+    async function createNotification(idUser,notification){
+      const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+      console.log(data)
+  }
+
     async function handleCheck(id) {
         const res = await axios.put('http://localhost:3000/api/acceptUser/'+id)
         console.log(res)
+        createNotification(id,'your account is accepted')
+        
     }
     async function handleDelete(id) {
       console.log('sdsd')
@@ -37,6 +44,7 @@ function Invitation({firstname,lastname,gender,birthday,email,role,id,avatar}) {
       console.log(deleted)
     
   }
+
 
   return (
     <div 

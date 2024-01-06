@@ -5,14 +5,21 @@ import timeago from 'time-ago'
 
 const Notifications = () => {
   const [notifications, setnotifications] = useState([]);
-  async function getNotifications (){
-    const {data} = await axios.get('http://localhost:3000/api/alert')
+  const [userData, setuserData] = useState(null)
+  async function getUserData(){
+      const parsedData =await JSON.parse(localStorage.getItem('user'))
+      setuserData(parsedData)
+      console.log(parsedData)
+      getNotifications(parsedData._id)
+  }
+  async function getNotifications (id){
+    const {data} = await axios.get('http://localhost:3000/api/getNotifications/'+id)
     data && setnotifications(data);
     console.log(data);
   }
 
   useEffect(()=>{
-    getNotifications();
+    getUserData()
   },[]);
 
   return (
@@ -35,7 +42,7 @@ const Notification = ({message,time,seen}) => {
       <p className='message'>{message}</p>
       <div className='desc'>
         <p className='time'>{time}</p>
-        <p className='seen'>{seen}</p>
+        <p className='seen'>{seen?'seen':'not seen'}</p>
       </div>
     </div>
   )

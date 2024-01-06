@@ -5,24 +5,23 @@ import axios  from 'axios'
 import timeago from 'time-ago'
 
 const RightSideBar = () => {
+    const [notifications, setnotifications] = useState([]);
     const [userData, setuserData] = useState(null)
     async function getUserData(){
         const parsedData =await JSON.parse(localStorage.getItem('user'))
         setuserData(parsedData)
         console.log(parsedData)
+        getNotifications(parsedData._id)
     }
-    const [notifications, setnotifications] = useState([]);
-    async function getNotifications (){
-        const {data} = await axios.get('http://localhost:3000/api/alert')
-        setnotifications(data);
-        console.log('data loaded'+data);
-        
+    async function getNotifications (id){
+      const {data} = await axios.get('http://localhost:3000/api/getNotifications/'+id)
+      data && setnotifications(data);
+      console.log(data);
     }
   
     useEffect(()=>{
-        getUserData();
-        getNotifications();
-    },[])
+      getUserData()
+    },[]);
     
   return (
     <div className='flex h-screen flex-col px-4'>
@@ -47,7 +46,7 @@ const RightSideBar = () => {
         <div className='w-full h-[550px] overflow-hidden '>
             <div className='flex justify-between text-gray-500 mb-2'>
                 <p>My Contacts</p>
-                <p className='cursor-pointer'>see all</p>
+                <Link to={'/ChatPage'}><p className='cursor-pointer'>see all</p></Link>
             </div>
             <div className='h-[88%] pr-1 overflow-auto'>
                 {
@@ -66,7 +65,7 @@ const RightSideBar = () => {
         <div className='w-full h-3/12 overflow-hidden'>
             <div className='flex justify-between text-gray-500 mb-2'>
                 <p>Notifications</p>
-                <p className='cursor-pointer'>see all</p>
+                <Link to={'/Notifications'}><p className='cursor-pointer'>see all</p></Link>
             </div>
             <div className='w-full h-full pr-1 overflow-auto'>
                 {notifications && notifications.map((e,i)=>(<div className='p-3 bg-[#2a2c44] rounded-md mb-2 relative overflow-hidden'>

@@ -67,8 +67,8 @@ const Questions = () => {
             {
                 arr && arr.map((e,i)=>(
                     <div  key={i} className='flex items-center text-white cursor-pointer' onClick={()=>setcurrent(e)}>
-                        <p className={`w-12 h-12 ${current == e ? 'bg-[#6D54BF] pink-shadow':'bg-[#1E2F7D] custom-shadow'} rounded-full text-center text-4xl`}>{e}</p>
-                        {i < arr.length -1 && <div className={`w-6 h-2 ${current == e ? 'bg-gradient-to-r from-[#6D54BF] to-[#1E2F7D]':'bg-[#1E2F7D]'}`}></div>}
+                        <p className={`w-12 h-12 ${current >= e ? 'bg-[#6D54BF] pink-shadow':'bg-[#1E2F7D] custom-shadow'} rounded-full text-center text-4xl`}>{e}</p>
+                        {i < arr.length -1 && <div className={`w-6 h-2 ${current >= e ? 'bg-gradient-to-r from-[#6D54BF] to-[#1E2F7D]':'bg-[#1E2F7D]'}`}></div>}
                         
                     </div>
                 ))

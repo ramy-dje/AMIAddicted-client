@@ -13,10 +13,16 @@ const MyPatient = () => {
     const [userSurvey, setuserSurvey] = useState(null)
     const navigate = useNavigate()
 
+    async function createNotification(idUser,notification){
+        const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+        console.log(data)
+    }
+
     async function AddSurveyToPatient(userId,survey){
 
         const {data} = await axios.post('http://localhost:3000/api/create/SurveyToUser',{userId,survey});
         console.log(data)
+        createNotification(userId,'new survey is added for you')
     }
     async function getUserSurvey(userId){
         const {data} = await axios.get('http://localhost:3000/api/get/SurveyToUser/'+userId)
@@ -26,6 +32,7 @@ const MyPatient = () => {
     async function deleteUserSurvey(id){
         const {data} = await axios.delete('http://localhost:3000/api/delete/SurveyToUser/'+id)
         console.log(data)
+        createNotification(id,'a survey is deleted ')
     }
 
 
@@ -48,6 +55,8 @@ const MyPatient = () => {
       async function sendData(Doc,Patient) {
         const res = await axios.put('http://localhost:3000/api/addDoctorContact',{Doc,Patient});
         const res2 = await axios.put('http://localhost:3000/api/addPatientContact',{Doc,Patient});
+        createNotification(Doc._id,'a new patient is added for you ')
+        createNotification(Patient._id,'a new doctor is added for you ')
         console.log(res);
         console.log(res2);
         console.log('c es bon')
@@ -149,6 +158,7 @@ const MyPatient = () => {
     function DoctorCard({doctor,isDelete,userData}) {
     async function deletePatients(Doc,Patient){
         const res = await axios.put('http://localhost:3000/api/deleteDoctorContact',{Doc,Patient});
+        const res2 = await axios.put('http://localhost:3000/api/deletePatientContact',{Doc,Patient});
         console.log(res);
         console.log('c es bon')
     }
