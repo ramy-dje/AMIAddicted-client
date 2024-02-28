@@ -86,7 +86,7 @@ function Edit() {
 
             </div>
 
-            <div className="column">
+            <div className="column ml-8">
 
               <h1>Update Profile</h1>
               <div className="input-inside">
