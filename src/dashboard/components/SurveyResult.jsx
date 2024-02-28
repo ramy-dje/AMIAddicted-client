@@ -8,12 +8,12 @@ const SurveyResult = () => {
     const [userData, setUserData] = useState(null);
     const [answers, setanswers] = useState(null)
     async function getUser(){
-        const {data} = await axios.get('http://localhost:3000/api/getUser/'+id)
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getUser/${id}`)
         setUserData(data)
         //console.log(data)
     }
     async function getUserAnswer(){
-        const {data} = await axios.get('http://localhost:3000/api/newQstRes/'+id)
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/newQstRes/${id}`)
         setanswers(data)
         console.log(data)
         console.log(answers)
@@ -27,7 +27,7 @@ const SurveyResult = () => {
         setanswers([{...answers[0],comment:newComment}])
     }
     async function updateComment(userId,comment){
-        const {data} = await axios.post('http://localhost:3000/api/update/comment/'+userId,{comment})
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/update/comment/${userId}`,{comment})
         console.log(data)
     }
   return (

@@ -22,7 +22,7 @@ function Login() {
     e.preventDefault();
     console.log(values);
     const {email,password} = values;
-    const {data} = await axios.post('http://localhost:3000/api/login',{email,password});
+    const {data} = await axios.post(`${import.meta.env.VITE_API}/api/login`,{email,password});
     console.log(data);
     if(data){
       navigate('/')

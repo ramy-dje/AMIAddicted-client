@@ -6,7 +6,7 @@ import axios from 'axios';
 const Invitations = () => {
     const [invitations, setInvitations] = useState(null)
     async function getInvitations() {
-      const {data} = await axios.get('http://localhost:3000/api/unacceptedUsers')
+      const {data} = await axios.get(`${import.meta.env.VITE_API}/api/unacceptedUsers`)
       console.log(data);
       setInvitations(data);
     }
@@ -27,19 +27,19 @@ const Invitations = () => {
 function Invitation({firstname,lastname,gender,birthday,email,role,id,avatar}) {
     const [extended, setextended] = useState(false);
     async function createNotification(idUser,notification){
-      const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+      const {data} = await axios.post(`${import.meta.env.VITE_API}/api/createNotification`,{idUser,notification})
       console.log(data)
   }
 
     async function handleCheck(id) {
-        const res = await axios.put('http://localhost:3000/api/acceptUser/'+id)
+        const res = await axios.put(`${import.meta.env.VITE_API}/api/acceptUser/${id}`)
         console.log(res)
         createNotification(id,'your account is accepted')
         
     }
     async function handleDelete(id) {
       console.log('sdsd')
-      const res = await axios.delete('http://localhost:3000/api/deleteUser/'+id)
+      const res = await axios.delete(`${import.meta.env.VITE_API}/api/deleteUser/${id}`)
       console.log(res)
       console.log(deleted)
     
@@ -52,8 +52,8 @@ function Invitation({firstname,lastname,gender,birthday,email,role,id,avatar}) {
     className={`flex ${extended ? 'items-start': 'items-center'} justify-between px-5 pt-1 min-h-[75px] h-fit bg-[#171825] rounded-lg custom-shadow text-white mb-8 cursor-pointer`}
     >
         <div  className={`flex ${extended ? 'gap-4 p-3 items-start' : 'gap-2 items-center'} `}>
-            <img src={avatar} className={`w-full ${extended ? 'h-24 w-24':'h-16 w-16'} bg-slate-500`} style={{clipPath:'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}/>
-            <div>
+            <img src={avatar} className={` ${extended ? 'h-24 w-24':'h-16 w-16'} bg-slate-500`} style={{clipPath:'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}/>
+            <div className=''>
                 {
                     extended ? <div className='text-xl'>
                     <p>User : {firstname} {lastname}</p>

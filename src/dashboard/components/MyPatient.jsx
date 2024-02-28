@@ -11,50 +11,58 @@ const MyPatient = () => {
     const [isChangingDoctor, setisChangingDoctor] = useState(true)
     const [surveyList, setsurveyList] = useState([])
     const [userSurvey, setuserSurvey] = useState(null)
+    
     const navigate = useNavigate()
 
+    const [myAccount, setmyAccount] = useState(null)
+    async function getMe(){
+        const parsedData =await JSON.parse(localStorage.getItem('user'))
+        setmyAccount(parsedData)
+        console.log(parsedData)
+        
+    }
     async function createNotification(idUser,notification){
-        const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/createNotification`,{idUser,notification})
         console.log(data)
     }
 
     async function AddSurveyToPatient(userId,survey){
 
-        const {data} = await axios.post('http://localhost:3000/api/create/SurveyToUser',{userId,survey});
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/create/SurveyToUser`,{userId,survey});
         console.log(data)
         createNotification(userId,'new survey is added for you')
     }
     async function getUserSurvey(userId){
-        const {data} = await axios.get('http://localhost:3000/api/get/SurveyToUser/'+userId)
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/get/SurveyToUser/${userId}`)
         setuserSurvey(data)
         console.log(data)
     }
     async function deleteUserSurvey(id){
-        const {data} = await axios.delete('http://localhost:3000/api/delete/SurveyToUser/'+id)
+        const {data} = await axios.delete(`${import.meta.env.VITE_API}/api/delete/SurveyToUser/${id}`)
         console.log(data)
         createNotification(id,'a survey is deleted ')
     }
 
 
     async function getSurvey(){
-      const {data} = await axios.get('http://localhost:3000/api/getNewQst')
+      const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getNewQst`)
       setsurveyList(data[0].surveysList)
     } 
     async function getUser(){
-        const {data} = await axios.get('http://localhost:3000/api/getUser/'+id);
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getUser/${id}`);
         setUserData(data)
-        //console.log(data)
+        console.log(data)
     }
     const [doctorsList, setDoctorsList] = useState([]);
     async function getDoctors() {
-        const {data} = await axios.get('http://localhost:3000/api/getDoctors');
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getDoctors`);
         setDoctorsList(data);
        // console.log(data)
     }
     
       async function sendData(Doc,Patient) {
-        const res = await axios.put('http://localhost:3000/api/addDoctorContact',{Doc,Patient});
-        const res2 = await axios.put('http://localhost:3000/api/addPatientContact',{Doc,Patient});
+        const res = await axios.put(`${import.meta.env.VITE_API}/api/addDoctorContact`,{Doc,Patient});
+        const res2 = await axios.put(`${import.meta.env.VITE_API}/api/addPatientContact`,{Doc,Patient});
         createNotification(Doc._id,'a new patient is added for you ')
         createNotification(Patient._id,'a new doctor is added for you ')
         console.log(res);
@@ -62,6 +70,9 @@ const MyPatient = () => {
         console.log('c es bon')
        
       }
+    useEffect(()=>{
+        getMe();
+    },[])  
     useEffect(()=>{
       getUser();
       getDoctors();
@@ -90,7 +101,7 @@ const MyPatient = () => {
                     <div className='overflow-y-auto overflow-x-hidden h-[90px] pr-1 pb-2 '>
                         {
                             userData && userData.contacts.map((e,i)=>(
-                                <DoctorCard key={i} userData={userData} doctor={e} isDelete={true} />
+                                <DoctorCard key={i} userData={userData} doctor={e} isDelete={true}  myAccount={myAccount}/>
                             ))
                         }
                     
@@ -110,7 +121,7 @@ const MyPatient = () => {
                     </div>
                 </div>
 
-               {userData && userData.role == 'admin' &&( isChangingDoctor ? <div className=' '>
+               {/*(myAccount && myAccount.role == 'medcin' ) && (isChangingDoctor */myAccount && myAccount.role != 'medcin'? <div className=' '>
                     <div className='flex  items-center text-white mb-2'>
                         <input 
                         type="text"  
@@ -147,7 +158,7 @@ const MyPatient = () => {
                             </div>)
                           )
                     }
-                    </div>)
+                    </div>//)
                 }
                 
             </div>
@@ -155,10 +166,10 @@ const MyPatient = () => {
     )
     }
 
-    function DoctorCard({doctor,isDelete,userData}) {
+    function DoctorCard({doctor,isDelete,userData,myAccount}) {
     async function deletePatients(Doc,Patient){
-        const res = await axios.put('http://localhost:3000/api/deleteDoctorContact',{Doc,Patient});
-        const res2 = await axios.put('http://localhost:3000/api/deletePatientContact',{Doc,Patient});
+        const res = await axios.put(`${import.meta.env.VITE_API}/api/deleteDoctorContact`,{Doc,Patient});
+        const res2 = await axios.put(`${import.meta.env.VITE_API}/api/deletePatientContact`,{Doc,Patient});
         console.log(res);
         console.log('c es bon')
     }
@@ -171,7 +182,7 @@ const MyPatient = () => {
                     <p className='text-sm mt-[-4px] text-[#989898]'>{doctor.email}</p>
                 </div>
             </div>
-            {false && <img src={deleteIcon} onClick={()=>deletePatients(doctor,userData)} alt="" className='cursor-pointer'/>}
+            {(myAccount && myAccount.role == 'admin') && <img src={deleteIcon} onClick={()=>deletePatients(doctor,userData)} alt="" className='cursor-pointer'/>}
         </div>
     )
 }

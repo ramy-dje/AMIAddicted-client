@@ -25,10 +25,10 @@ const Dashboard = () => {
   return (
     <div className='w-full h-screen flex overflow-hidden relative'>
       
-        <div className='sm:w-1/5 bg-gradient-to-br from-[#202275] to-[#6c6da9ce] h-[100vh] w-[50px] z-[1]'>
+        <div className='sm:w-1/5 bg-gradient-to-br from-[#202275] to-[#6c6da9] h-[100vh] w-[50px] z-[1]'>
           <LeftSideBare />
         </div>
-        <div className='md:w-3/5  w-full lg:bg-[#1d203eea] bg-[#1d203efd] h-[100vh] flex items-center justify-center relative z-[1]'>
+        <div className='md:w-3/5  w-full lg:bg-[#1d203e] bg-[#1d203efd] h-[100vh] flex items-center justify-center relative z-[1]'>
           <Routes>
           <Route path='home' Component={Home}/>
             <Route path='doctorsList/MyDoctor/:id' Component={MyDoctor}/>
@@ -47,7 +47,7 @@ const Dashboard = () => {
             <Route path='MyStatistics' Component={Statistics}/>
           </Routes>
           <div className='w-full bg-transparent flex justify-center h-fit  md:hidden absolute bottom-0 z-2'>
-              <div className='w-10/12 h-12 mb-2 bg-gradient-to-l from-[#20217581] to-[#6c6da986] flex justify-between items-center px-3 rounded-full'>
+              <div className='w-10/12 h-12 mb-2 bg-gradient-to-l from-[#202175] to-[#6c6da986] flex justify-between items-center px-3 rounded-full'>
                 {
                   rightSideBarIcons.map((e,i)=>(
                       <Link to={e.link}>
@@ -63,7 +63,8 @@ const Dashboard = () => {
         <div className='w-1/5 bg-[#171825] h-[100vh] hidden md:block z-[1]'>
           <RightSideBar />
         </div>
-        <video src={video}  autoPlay loop className=' absolute h-screen z-0 lg:block hidden'></video>
+        {//<video src={video}  autoPlay loop className=' absolute h-screen z-0 lg:block hidden'></video>
+        }
     </div>
   )
 }

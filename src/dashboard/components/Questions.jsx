@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-
+import toast from 'react-hot-toast';
 
 const Questions = () => {
     const [arr,setArr] = useState([]);
@@ -23,14 +23,14 @@ const Questions = () => {
         console.log(responses)
         let res = 0
         responses.forEach((e)=>{res +=Number(e.value) })
-        const {data} = await axios.post('http://localhost:3000/api/create/newQstRes',{
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/create/newQstRes`,{
             surveyName,
             patient:userData._id,
             patientAnswers:responses,
             result:res ,
             comment:''
         })
-       
+       toast.success('survey sended successfully')
         console.log(res)
     }
 
@@ -42,7 +42,7 @@ const Questions = () => {
     }
 
     async function getUserSurvey(userId){
-        const {data} = await axios.get('http://localhost:3000/api/get/SurveyToUser/'+userId)
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/get/SurveyToUser/${userId}`)
         //setuserSurvey(data)
         console.log(data && data.length > 0)
         if(data && data.length > 0){

@@ -10,18 +10,19 @@ const GeneralChat = () => {
         setcurrentMsg(value)
     }
     async function getMessages(){
-        const {data} = await axios.get('http://localhost:3000/api/generalChat')
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/generalChat`)
+        console.log(data)
         setgeneralChat(data)
     }
     async function sendMessages(sender,msg){
-        const {data} = await axios.post('http://localhost:3000/api/generalChat',{contennues:msg,id_Exéditeur:sender})
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/generalChat`,{contennues:msg,id_Exéditeur:sender})
         console.log(data);
         setcurrentMsg('')
         console.log('message send')
     }
     async function deleteMessage(msgId){
        
-        const {data} = await axios.delete(`http://localhost:3000/api/generalChat/one/${msgId}`)
+        const {data} = await axios.delete(`${import.meta.env.VITE_API}/api/generalChat/one/${msgId}`)
         console.log(data)
     }
     
@@ -115,12 +116,12 @@ const GeneralChat = () => {
   return (
     <div className='w-11/12 h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 pt-2 sm:overflow-hidden '>
         <div className='h-5/6 w-full overflow-auto pr-1'>
-            {generalChat && generalChat.map((e,i)=>(<div key={i} className={`flex ${e.id_Exéditeur == userData._id ? 'justify-start':' flex-row-reverse'} gap-2 mb-2  text-white group`}>
-                <div className='sm:w-12 sm:h-12 w-8 h-8  bg-gray-500 rounded-lg'></div>
+            {generalChat && generalChat.map((e,i)=>(<div key={i} className={`flex ${e.id_Exéditeur._id == userData._id ? 'justify-start':' flex-row-reverse'} items-end gap-2 mb-2  text-white group`}>
+                <img src={e.id_Exéditeur.avatar} alt='' className='sm:w-12 sm:h-12 w-8 h-8  bg-gray-500 rounded-lg'/>
                 <p 
-                className={`p-2 sm:max-w-[300px] max-w-[150px] text-sm sm:text-lg ${e.id_Exéditeur == userData._id ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
+                className={`p-2 sm:max-w-[300px] max-w-[150px] text-sm sm:text-lg ${e.id_Exéditeur._id == userData._id ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
                 > {e.contennues}</p>
-                {(userData.role =='admin' || e.id_Exéditeur == userData._id ) && <img src={threeDots} className='hidden group-hover:block w-4  cursor-pointer' onClick={()=>deleteMessage(e._id)}/>}
+                {(userData.role =='admin' || e.id_Exéditeur._id == userData._id ) && <img src={threeDots} className='hidden group-hover:block w-4  cursor-pointer' onClick={()=>deleteMessage(e._id)}/>}
             </div>))}
         </div>
         <div className='h-[55px] w-full mr-8 ml-2  rounded-tr-lg rounded-full relative'>

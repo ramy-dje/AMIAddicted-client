@@ -29,7 +29,7 @@ function Edit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data } = await axios.put(`http://localhost:3000/api/updateUser/${values.id}`, {
+    const { data } = await axios.put(`${import.meta.env.VITE_API}/api/updateUser/${values.id}`, {
       Nom: values.firstname,
       Prenom: values.lastname,
       password: values.password,

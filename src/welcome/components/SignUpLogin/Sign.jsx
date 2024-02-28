@@ -27,7 +27,7 @@ function SignUp() {
     console.log(values);
     const { firstname: Nom, lastname: Prenom, gender: Gener, birthday: dt_Naiss, role: Autorisation, email, password, avatar } = values
     let res = null;
-    const {data} = await axios.post('http://localhost:3000/api/newRegister', { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
+    const {data} = await axios.post(`${import.meta.env.VITE_API}/api/newRegister`, { Nom, Prenom, Gener, dt_Naiss, Autorisation, email, password, avatar });
     console.log(data)
     if(data){
       navigate('/*')
@@ -53,7 +53,7 @@ function SignUp() {
     }
   }
   async function createNotification(idUser,notification){
-      const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+      const {data} = await axios.post(`${import.meta.env.VITE_API}/api/createNotification`,{idUser,notification})
       console.log(data)
   }
 

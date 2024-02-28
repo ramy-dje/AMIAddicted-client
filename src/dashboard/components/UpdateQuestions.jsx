@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {X,add} from '../assets/assets'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 const UpdateQuestions = () => {
     const [surveyQuestions,setsurveyQuestions] = useState(null);
@@ -13,7 +14,7 @@ const UpdateQuestions = () => {
     }
 
     useEffect(()=>{
-      axios.get('http://localhost:3000/api/getOneNewQst/'+listName).then((res)=>{console.log(res.data.list);setsurveyQuestions(res.data.list)})
+      axios.get(`${import.meta.env.VITE_API}/api/getOneNewQst/${listName}`).then((res)=>{console.log(res.data.list);setsurveyQuestions(res.data.list)})
 
     },[])
     const [responses, setresponses] = useState([]);
@@ -45,8 +46,9 @@ const UpdateQuestions = () => {
     newListName:name,
     list : [...surveyQuestions]
   }
-    const data = await axios.post('http://localhost:3000/api/updateNewQst',updatedSurvey);
+    const data = await axios.post(`${import.meta.env.VITE_API}/api/updateNewQst`,updatedSurvey);
     console.log(data)
+    toast.success('survey updated successfully')
  }
 
 

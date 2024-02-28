@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const PatientsList = () => {
   const [patientsList, setpatientsList] = useState([]);
   async function getPatients() {
-    const {data} = await axios.get('http://localhost:3000/api/getPatients');
+    const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getPatients`);
     setpatientsList(data);
   }
   useEffect(()=>{

@@ -23,7 +23,7 @@ const MessagingPage = () => {
     const [fetchedMessages, setfetchedMessages] = useState(null);
     useEffect(()=>{
       const d = JSON.parse(localStorage.getItem('user'));
-      axios.get('http://localhost:3000/api/message').then((res)=>{console.log(res.data);setfetchedMessages(res.data)}) 
+      axios.get(`${import.meta.env.VITE_API}/api/message`).then((res)=>{console.log(res.data);setfetchedMessages(res.data)}) 
       console.log(d.contacts);
       setuserData(d);  
     },[fetchedMessages])
@@ -33,13 +33,14 @@ const MessagingPage = () => {
     async function sendMessages(sender,reciver,msg) {
       console.log(sender,reciver)
       console.log(msg);
-      axios.post('http://localhost:3000/api/message',{sender:sender,reciver:reciver,msg:msg}).then((res)=>{
+      axios.post(`${import.meta.env.VITE_API}/api/message`,{sender:sender,reciver:reciver,msg:msg}).then((res)=>{
         console.log(res.data)
       });
+      setmessage('')
     }
     async function deleteMessage(msgId,userID){
         console.log('clicked')
-        const {data} = await axios.delete(`http://localhost:3000/api/mymessage/${userID}/${msgId}`)
+        const {data} = await axios.delete(`${import.meta.env.VITE_API}/api/mymessage/${userID}/${msgId}`)
         console.log(data)
     }
     function handleMessageChange(value){
@@ -160,8 +161,8 @@ const MessagingPage = () => {
         </div>
             <div className='w-full h-5/6 bg-[#171825] rounded-[30px] custom-shadow px-6 pt-2 sm:overflow-hidden '>
                 <div className='h-5/6 w-full overflow-auto pr-1'>
-                    {fetchedMessages && selectedFreind && fetchedMessages.map((e,i)=>(e.id_Exéditeur == userData._id && e.id_Destnataire == selectedFreind._id && <div key={i} className={`flex ${e.id_Exéditeur == userData._id ? 'justify-start':' flex-row-reverse'} gap-2 mb-2  text-white group`}>
-                        <div className='sm:w-12 sm:h-12 w-8 h-8  bg-gray-500 rounded-lg'></div>
+                    {fetchedMessages && selectedFreind && fetchedMessages.map((e,i)=>(/*e.id_Exéditeur == userData._id && e.id_Destnataire == selectedFreind._id &&*/ <div key={i} className={`flex ${e.id_Exéditeur == userData._id ? 'justify-start':' flex-row-reverse'} gap-2 mb-2  text-white group`}>
+                        <img src={e.id_Exéditeur == userData._id ? userData.avatar : selectedFreind.avatar} className='sm:w-12 sm:h-12 w-8 h-8  bg-gray-500 rounded-lg' />
                         <p 
                         className={`p-2 sm:max-w-[300px] max-w-[150px] text-sm sm:text-lg ${e.id_Exéditeur == userData._id ? 'bg-gradient-to-r from-indigo-700 to-indigo-400 rounded-tl-[85px] rounded-tr-[100px] rounded-br-[100px]' : 'rounded-tl-[100px] rounded-bl-[100px] rounded-br-[85px] bg-[#2C2F48]'}`}
                         > {e.contennues}</p>

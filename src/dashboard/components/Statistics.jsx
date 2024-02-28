@@ -8,11 +8,12 @@ const Statistics = () => {
     const [doctorsNumber, setdoctorsNumber] = useState(0);
     const [patientNumber, setpatientNumber] = useState(0);
     const [adminsNumber, setadminsNumber] = useState(0);
+    const [admins, setadmins] = useState(null);
     useEffect(()=>{
-        axios.get('http://localhost:3000/api/getAnalytics').then((res)=>{setanalyticsData(res.data);console.log(res.data)})
-        axios.get('http://localhost:3000/api/getDoctors').then((res)=>setdoctorsNumber(res.data.length))
-        axios.get('http://localhost:3000/api/getPatients').then((res)=>setpatientNumber(res.data.length))
-        axios.get('http://localhost:3000/api/getAdmins').then((res)=>setadminsNumber(res.data.length))
+        axios.get(`${import.meta.env.VITE_API}/api/getAnalytics`).then((res)=>{setanalyticsData(res.data);console.log(res.data)})
+        axios.get(`${import.meta.env.VITE_API}/api/getDoctors`).then((res)=>setdoctorsNumber(res.data.length))
+        axios.get(`${import.meta.env.VITE_API}/api/getPatients`).then((res)=>setpatientNumber(res.data.length))
+        axios.get(`${import.meta.env.VITE_API}/api/getAdmins`).then((res)=>{setadminsNumber(res.data.length);setadmins(res.data);console.log(res.data)})
     },[])
   
       let minValue= 0 ;
@@ -41,25 +42,17 @@ const Statistics = () => {
             <div className='md:w-[35%] w-full  bg-[#171825] custom-shadow rounded-lg text-white p-3'>
                 <h1 className='sm:text-xl text-lg pb-3'>Admins List</h1>
                 <div className='flex flex-col items-center'>
-                    <div className='w-[90%] h-[50px]  bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
+                    {admins && admins.map((e)=><div className='w-[90%] h-[50px]  bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
                         <div className='h-full flex items-center gap-2'>
-                            <img src='' className='w-12 h-full bg-gray-400 rounded-tr-full'/>
+                            <img src={e.avatar} className='w-12 h-full bg-gray-400 rounded-tr-full'/>
                             <div className='text-white'>
-                                <p>ramy dje</p>
-                                <p className='text-sm mt-[-4px] text-[#989898]'>email@gmai.com</p>
+                                <p>{e.Nom} {e.Prenom}</p>
+                                <p className='text-sm mt-[-4px] text-[#989898]'>{e.email}</p>
                             </div>
                         </div>
-                    </div>
+                    </div>)}
 
-                    <div className='w-[90%] h-[50px]  bg-[#2A2C44] flex rounded-lg items-center justify-between pr-2 mb-2'>
-                        <div className='h-full flex items-center gap-2'>
-                            <img src='' className='w-12 h-full bg-gray-400 rounded-tr-full'/>
-                            <div className='text-white'>
-                                <p>ramy dje</p>
-                                <p className='text-sm mt-[-4px] text-[#989898]'>email@gmai.com</p>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </div>
 
             </div>
@@ -80,7 +73,7 @@ function StatisticsCard({img,total,thisMonth,title}) {
             <div className='w-[80px] h-[80px] border-white white-shadow border-[10px] rounded-full flex items-center justify-center '>
                 <p className='text-3xl'>{total}</p>
             </div>
-            <p className='text-xs'> {thisMonth} new {title}s</p>
+            <p className='text-xs'> number of {title}s</p>
         </div>
         <p className='text-[25px] mt-4'>{title}</p>
     </div>

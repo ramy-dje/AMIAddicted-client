@@ -6,11 +6,11 @@ import axios from 'axios'
 const UpdateSurveys = () => {
   const [surveyList, setsurveyList] = useState([])
   async function getSurvey(){
-    const {data} = await axios.get('http://localhost:3000/api/getNewQst')
+    const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getNewQst`)
     setsurveyList(data[0].surveysList)
   }
   async function addSurvey() {
-    const {data} = await axios.post('http://localhost:3000/api/createNewQst',{listName:'new survey',list:[]})
+    const {data} = await axios.post(`${import.meta.env.VITE_API}/api/createNewQst`,{listName:'new survey',list:[]})
     console.log(data)
   } 
   useEffect(()=>{
@@ -26,7 +26,7 @@ const UpdateSurveys = () => {
             <p>{e.listName}</p>
             <div className='flex items-center gap-2'>
                 <Link to={'UpdateQuestions/'+e.listName}><img src={updatequestions} alt="" className='w-6'/></Link>
-                <img src={X} alt="" className='w-10'/>
+                <img src={X} alt="" className='w-10 hover:cursor-pointer'/>
             </div>
           </div>
         )}

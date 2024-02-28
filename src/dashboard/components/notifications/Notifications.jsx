@@ -13,7 +13,7 @@ const Notifications = () => {
       getNotifications(parsedData._id)
   }
   async function getNotifications (id){
-    const {data} = await axios.get('http://localhost:3000/api/getNotifications/'+id)
+    const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getNotifications/${id}`)
     data && setnotifications(data);
     console.log(data);
   }

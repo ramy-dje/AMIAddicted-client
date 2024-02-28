@@ -9,18 +9,18 @@ const MyDoctor = () => {
     const [userData, setUserData] = useState(null);
     
     async function createNotification(idUser,notification){
-        const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/createNotification`,{idUser,notification})
         console.log(data)
     }
 
     async function getUser(){
-        const {data} = await axios.get('http://localhost:3000/api/getUser/'+id);
+        const {data} = await axios.get(`${import.meta.env.VITE_API}/api/getUser/${id}`);
         setUserData(data)
         console.log(data)
     }
     const [patientsList, setpatientsList] = useState([])
     async function getPatients(){
-    axios.get('http://localhost:3000/api/getPatients').then((res)=>{
+    axios.get(`${import.meta.env.VITE_API}/api/getPatients`).then((res)=>{
       console.log(res.data)
       setpatientsList(res.data);
     });
@@ -31,8 +31,8 @@ const MyDoctor = () => {
     },[userData])
    
       async function sendData(Doc,Patient) {
-        const res = await axios.put('http://localhost:3000/api/addPatientContact',{Doc,Patient});
-        const res2 = await axios.put('http://localhost:3000/api/addDoctorContact',{Doc,Patient});
+        const res = await axios.put(`${import.meta.env.VITE_API}/api/addPatientContact`,{Doc,Patient});
+        const res2 = await axios.put(`${import.meta.env.VITE_API}/api/addDoctorContact`,{Doc,Patient});
         createNotification(Doc._id,'a new patient is added for you ')
         createNotification(Patient._id,'a new doctor is added for you ')
         console.log(res);
@@ -91,13 +91,13 @@ const MyDoctor = () => {
 function PatientCard({patient,isDelete,userData}) {
     async function createNotification(idUser,notification){
         
-        const {data} = await axios.post('http://localhost:3000/api/createNotification',{idUser,notification})
+        const {data} = await axios.post(`${import.meta.env.VITE_API}/api/createNotification`,{idUser,notification})
         console.log({idUser,notification})
         console.log(data)
     }
     async function deletePatients(Doc,Patient){
-        const res = await axios.put('http://localhost:3000/api/deletePatientContact',{Doc,Patient});
-        const res2 = await axios.put('http://localhost:3000/api/deleteDoctorContact',{Doc,Patient});
+        const res = await axios.put(`${import.meta.env.VITE_API}/api/deletePatientContact`,{Doc,Patient});
+        const res2 = await axios.put(`${import.meta.env.VITE_API}/api/deleteDoctorContact`,{Doc,Patient});
         createNotification(Doc._id,'a  patient is deleted for you ')
         createNotification(Patient._id,'a doctor is deleted for you ')
         console.log(res);
